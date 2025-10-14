@@ -7,6 +7,7 @@ import sheild from '../../assets/homePage1/shield-tick.svg'
 import marketSvg from '../../assets/homePage1/bar-line-chart.svg'
 import marketchartGraph from '../../assets/homePage1/chart-breakout-square.svg'
 import singleBox from '../../assets/homePage1/singlebox.png';
+import arrowUp from '../../assets/homePage1/arrow-up.svg';
 
 export default function RevolutionPage() {
     return (
@@ -77,7 +78,10 @@ function Tag({ label, imgVal }: { label: string, imgVal: string }) {
                 {/* {imgVal} */}
             </span>
             {label}
-            <ArrowRight className="w-3 h-3 text-gray-400" />
+            {/* <ArrowRight className="w-3 h-3 text-gray-400" /> */}
+            <span>
+                <img src={arrowUp} alt="arrow" className="w-2 h-2 ml-3" />
+            </span>
         </div>
     )
 }
