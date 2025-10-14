@@ -1,5 +1,3 @@
-// MarqueeDemo.tsx
-import React from 'react';
 
 // Mock data for the cards
 const sampleItems = [

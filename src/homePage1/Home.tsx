@@ -1,5 +1,4 @@
 import { Landing } from './components/LandingPage'
-import New from './components/New'
 import NewPage from './components/NewPage'
 import RevolutionPage from './components/RevolutionPage'
 

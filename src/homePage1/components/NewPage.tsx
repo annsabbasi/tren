@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { ArrowRight, ChartNoAxesCombined, Flame, Lightbulb } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import greenBull from '../../assets/homePage1/greenbull.png';
 import purpleBull from '../../assets/homePage1/purplebull.png';
 import singleBox from '../../assets/homePage1/singlebox.png';
@@ -57,6 +57,8 @@ interface MarqueeCardsProps {
     pauseOnHover?: boolean;
     className?: string;
 }
+
+
 
 const MarqueeCards = ({
     items,

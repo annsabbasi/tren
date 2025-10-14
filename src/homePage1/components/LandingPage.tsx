@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Zap, Star, ArrowRight, ChevronRight, CirclePlay } from "lucide-react"
+import { Star, ArrowRight, ChevronRight } from "lucide-react"
 import dashboardImg from '../../assets/homePage1/dashboard-img.png'
 import dashboardImg2 from '../../assets/homePage1/dashboard-i2.png'
 import dashboardImg3 from '../../assets/homePage1/dashboard-i3.png'
