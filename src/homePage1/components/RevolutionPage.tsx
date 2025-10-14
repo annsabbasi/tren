@@ -25,7 +25,7 @@ export default function RevolutionPage() {
                     <div className="flex items-end justify-between">
                         <p className="text-sm text-gray-400 mb-2 flex items-center gap-2">
                             <span className="inline-block size-5">
-                                <img src={marketchartGraph} alt="graph" />
+                                <img src={marketchartGraph} alt="graph" className="opacity-50" />
                             </span>
                             Ask anything
                         </p>
@@ -53,7 +53,7 @@ export default function RevolutionPage() {
                         </div>
                     </div>
                     <h2 className="text-3xl font-semibold">Financial GPT <ArrowRight className="inline w-6 h-6 ml-1" /></h2>
-                    <p className="text-gray-300 mt-3 max-w-3xl">
+                    <p className="text-gray-400 mt-3 max-w-3xl">
                         Ask me anything about financial markets, trading strategies, stock analysis, economic trends, or investment insights.
                         I’m here to help you make informed financial decisions.
                     </p>
