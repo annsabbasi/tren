@@ -14,7 +14,7 @@ export default function Navbar() {
     const [language, setLanguage] = useState("EN")
 
     return (
-        <header className="glass w-3/4 text-white px-6 py-3 flex items-center justify-between border rounded-4xl left-1/2 -translate-x-1/2 mx-auto fixed z-10 mt-6 max-w-6xl">
+        <header className="glass w-3/4 text-white px-6 py-3 flex items-center justify-between border !rounded-full left-1/2 -translate-x-1/2 mx-auto fixed z-50 mt-6 max-w-6xl">
             <div className="flex items-center gap-14">
                 <div className="flex items-center gap-2">
                     {/* Replace the src below with your own logo */}
@@ -74,7 +74,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Sign In */}
-                <Button variant="ghost" className="text-white hover:text-gray-300">
+                <Button variant="ghost" className="text-white hover:text-gray-300 rounded-full" style={{ backgroundColor: 'rgba(55, 65, 81, 0.25)' }}>
                     Sign in
                 </Button>
 
