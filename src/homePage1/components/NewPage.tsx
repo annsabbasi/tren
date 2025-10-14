@@ -58,8 +58,6 @@ interface MarqueeCardsProps {
     className?: string;
 }
 
-
-
 const MarqueeCards = ({
     items,
     direction = "left",
@@ -67,12 +65,17 @@ const MarqueeCards = ({
     pauseOnHover = true,
     className,
 }: MarqueeCardsProps) => {
+    // Transform direction to whatever prop the Marquee component expects
+    const marqueeProps = {
+        // Example: if the component uses 'reverse' instead of 'direction'
+        reverse: direction === "right",
+        pauseOnHover,
+        // Add other props as needed
+    };
+
     return (
         <div className={`relative w-full ${className}`}>
-            <Marquee
-                direction={direction}
-                pauseOnHover={pauseOnHover}
-            >
+            <Marquee {...marqueeProps}>
                 <MarqueeFade side="left" />
                 <MarqueeFade side="right" />
                 <MarqueeContent>
