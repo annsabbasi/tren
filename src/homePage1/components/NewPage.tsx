@@ -183,6 +183,11 @@ export default function NewPage() {
                 <div className="green-shadow top-10"></div>
             </div>
 
+            <div className="">
+                <img src={singleBox} alt="box" className="absolute -right-[430px] top-10 object-contain w-1/2" />
+                <div className="purple-shadow top-10"></div>
+            </div>
+
         </div>
     );
 }

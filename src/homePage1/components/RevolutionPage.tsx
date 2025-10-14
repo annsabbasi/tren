@@ -6,12 +6,19 @@ import lightBulb from '../../assets/homePage1/lightbulb-02.svg'
 import sheild from '../../assets/homePage1/shield-tick.svg'
 import marketSvg from '../../assets/homePage1/bar-line-chart.svg'
 import marketchartGraph from '../../assets/homePage1/chart-breakout-square.svg'
+import singleBox from '../../assets/homePage1/singlebox.png';
 
 export default function RevolutionPage() {
     return (
-        <div className="pt-32 pb-20 mx-auto px-8">
+        <div className="relative pt-32 pb-20 mx-auto px-8">
             <h1 className="mx-auto max-w-3xl text-center text-balance text-4xl md:text-5xl font-light pb-16">Revolutionizing the
                 Investment worldwide</h1>
+
+            <div className="">
+                <img src={singleBox} alt="box" className="absolute -right-[450px] top-10 object-contain w-1/2" />
+                <div className="purple-shadow top-10"></div>
+            </div>
+
             <Card className="relative rounded-4xl bg-[#0B0B0E] border text-white shadow-lg pr-1 pt-1">
 
                 <CardContent className="flex flex-col justify-between h-full pr-0">
@@ -37,7 +44,7 @@ export default function RevolutionPage() {
                             <div className="absolute -top-4 right-30">
                                 <Tag label="Stock and crypto insights" imgVal={currencyEht} />
                             </div>
-                            <div className="absolute -right-10 bottom-20">
+                            <div className="absolute -right-10 bottom-10">
                                 <Tag label="Market analysis and trends" imgVal={marketSvg} />
                             </div>
                             <div className="absolute right-2/6 top-25 w-2/5">
