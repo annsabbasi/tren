@@ -61,7 +61,6 @@ interface MarqueeCardsProps {
 const MarqueeCards = ({
     items,
     direction = "left",
-    speed = "normal",
     pauseOnHover = true,
     className,
 }: MarqueeCardsProps) => {
