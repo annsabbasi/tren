@@ -111,7 +111,7 @@ body {
   width: 600px;
   height: 450px;
   /* top: 100px; */
-  left: -450px;
+  /* left: -450px; */
   z-index: -1;
   opacity: 0.6;
   filter: blur(100px) saturate(50%);
@@ -122,33 +122,17 @@ body {
   content: '';
   position: absolute;
   border-radius: 50%;
+  /* background: linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%); */
   background: linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%);
   width: 600px;
   height: 450px;
-  /* top: 100px; */
-  right: -450px;
+  /* right: -400px; */
   z-index: -1;
   opacity: 1;
   filter: blur(300px) saturate(50%);
   z-index: -90;
 }
 
-.navypurple-shadow {
-  content: '';
-  position: absolute;
-  /* background: linear-gradient(274.57deg, #0C744A 1.89%, #14E893 98.19%); */
-  /* background: linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%); */
-  background: linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%);
-  border-radius: 50%;
-  width: 600px;
-  height: 450px;
-  /* top: 100px; */
-  right: -400px;
-  z-index: -1;
-  opacity: 1;
-  filter: blur(300px) saturate(50%);
-  z-index: -90;
-}
 
 .home-main {
   background: url("./assets/homePage1/noise.svg") center center / cover no-repeat;
@@ -175,6 +159,100 @@ body {
   z-index: -2;
 }
 
+.ai-strategy-shade-purple {
+  content: '';
+  position: absolute;
+  background: linear-gradient(90deg, #211447 0%, #5131AD 100%);
+  border-radius: 50%;
+  width: 700px;
+  height: 550px;
+  /* right: -400px; */
+  z-index: -1;
+  opacity: 0.8;
+  /* filter: blur(300px) saturate(50%); */
+  filter: blur(150px);
+  z-index: -90;
+}
+
+.ai-strategy-shade-green {
+  content: '';
+  position: absolute;
+  background: linear-gradient(274.57deg, #0C744A 1.89%, #14E893 98.19%);
+  border-radius: 50%;
+  width: 700px;
+  height: 550px;
+  /* right: -400px; */
+  z-index: -1;
+  opacity: 0.4;
+  /* filter: blur(300px) saturate(50%); */
+  filter: blur(150px);
+  z-index: -90;
+}
+
+
+/* AI Strategies */
+.ai-strategies-main {
+  position: relative;
+  border-radius: 30px;
+  /* Outer rounding */
+  overflow: hidden;
+  background: transparent;
+}
+
+.ai-strategies-main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  /* Keeps smooth rounding on outer edges */
+  padding: 12px;
+  /* Border thickness */
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1));
+  -webkit-mask:
+    /* Outer shape */
+    linear-gradient(#fff 0 0) content-box,
+    /* Inner cutout */
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  /* Inner radius simulation */
+  mask-border: none;
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  pointer-events: none;
+}
+
+.ai-strategies-main>* {
+  position: relative;
+  border-radius: calc(24px - 20px);
+  /* Inner radius = outer - border thickness */
+  overflow: hidden;
+}
+
+
+
+
+/* RevolutionSlider */
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 20s linear infinite;
+}
+
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
+}
 
 /* .special-btn {
   background: linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%);
