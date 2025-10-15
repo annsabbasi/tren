@@ -1,4 +1,3 @@
-import Logo from '../../../assets/homePage1/logo.png';
 import LogoSm from '../../../assets/homePage1/logosm.svg';
 import AiStrategiesGIF from '../../../assets/homePage1/aiStrategiesGIT.gif';
 import { Input, Tag } from './RevolutionPage';
