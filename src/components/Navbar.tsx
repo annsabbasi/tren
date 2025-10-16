@@ -7,8 +7,8 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import Logo from '../assets/homePage1/logo.png'
-import flag from "../assets/homePage1/Flags.svg"
+import Logo from '../assets/Home/logo.png'
+import flag from "../assets/Home/Flags.svg"
 
 export default function Navbar() {
     const [language, setLanguage] = useState("EN")
