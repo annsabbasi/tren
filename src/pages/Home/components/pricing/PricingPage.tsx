@@ -158,7 +158,6 @@ const PricingSection: React.FC = () => {
     const cardsRef = useRef<Map<string, HTMLDivElement>>(new Map());
 
     // Check if any accordion is open in any card
-    const isAnyAccordionOpen = openCard !== null;
 
     // Update sticky cards when openCard changes
     useEffect(() => {
