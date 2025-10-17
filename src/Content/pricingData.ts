@@ -11,8 +11,8 @@ export interface PricingTier {
     yearlyPrice: string;
     savings?: string;
     popular?: boolean;
-    gradient: string;
-    buttonVariant: 'default' | 'gradient' | 'primary';
+    // gradient: string;
+    // buttonVariant: 'default' | 'gradient' | 'primary';
     features: {
         aiPrompts: {
             title: string;
@@ -37,8 +37,6 @@ export const pricingData: PricingTier[] = [
         monthlyPrice: '$14.95',
         yearlyPrice: '$143.52',
         savings: 'Save $35.55',
-        gradient: 'linear-gradient(180deg,rgba(20,232,147,0.1)_0%,rgba(6,4,12,.1)_35%)',
-        buttonVariant: 'gradient',
         features: {
             aiPrompts: {
                 title: '100 AI prompts per month',
@@ -84,8 +82,6 @@ export const pricingData: PricingTier[] = [
         monthlyPrice: '$29.95',
         yearlyPrice: '$287.52',
         savings: 'Save $71.48',
-        gradient: 'linear-gradient(180deg,rgba(79,57,172,0.25)_0%,rgba(6,4,12,.1)_35%)',
-        buttonVariant: 'gradient',
         features: {
             aiPrompts: {
                 title: '400 AI prompts per month',
@@ -132,8 +128,6 @@ export const pricingData: PricingTier[] = [
         yearlyPrice: '$479.52',
         savings: 'Save $111.48',
         popular: true,
-        gradient: 'linear-gradient(180deg,rgba(20,232,147,0.5)_0%,rgba(6,4,12,.1)_35%)',
-        buttonVariant: 'primary',
         features: {
             aiPrompts: {
                 title: '1000 AI prompts per month',
@@ -179,8 +173,6 @@ export const pricingData: PricingTier[] = [
         monthlyPrice: '$99.95',
         yearlyPrice: '$959.52',
         savings: 'Save $231.48',
-        gradient: 'linear-gradient(180deg,rgba(79,57,172,0.65)_0%,rgba(6,4,12,.1)_35%)',
-        buttonVariant: 'gradient',
         features: {
             aiPrompts: {
                 title: '1500 AI prompts per month',

@@ -29,7 +29,7 @@ function AnimatedGradient() {
     );
 }
 
-function StatBubble() {
+export function StatBubble() {
     return (
         <div className="bg-white/5 backdrop-blur-sm
  rounded-2xl px-6 py-2 border-r border-l">
@@ -38,7 +38,7 @@ function StatBubble() {
                 {/* <Zap className="brand" size={16} /> */}
 
                 <img src={flash} alt="light" className="size-10" />
-                <div className="flex text-sm flex-col">
+                <div className="flex text-sm flex-col text-start">
                     <span className="text-muted-foreground text-base">10,000+</span>
                     <p className="mt-1 text-xs text-muted-foreground">investors sharing insights.</p>
                 </div>
@@ -47,14 +47,14 @@ function StatBubble() {
     )
 }
 
-function TrustBubble() {
+export function TrustBubble() {
     return (
         <div className="bg-white/5 backdrop-blur-sm
  rounded-2xl px-6 py-2 border-r border-l">
             <div className="flex items-center gap-4">
                 {/* <Zap className="brand" size={16} /> */}
                 <img src={userReview} alt="light" className="w-24" />
-                <div className="flex text-sm flex-col">
+                <div className="flex text-sm flex-col text-start">
                     <span className="text-gray-300 text-xs">5.0 rating from 1,650+ patients</span>
                     <div className="flex gap-1 items-center">
                         <div className="flex items-center text-amber-400">
@@ -119,15 +119,7 @@ export function Landing() {
                         Start free trial
                         <span className=""> <ChevronRight size={14} /> </span>
                     </Button> */}
-                    <Button
-                        className="rounded-full px-3 pl-5 py-5 text-primary-foreground special-btn cursor-pointer hover:scale-110 transition-all"
-                        style={{
-                            boxShadow: `
-      20px 0px 50px 0px rgba(40, 173, 155, 0.5),
-      -20px 0px 50px 0px rgba(78, 58, 172, 0.5)
-    `,
-                        }}
-                    >
+                    <Button className="special-btn hover:scale-110 gradient-box-shadow">
                         Start free trial
                         <span className="ml-1">
                             <ChevronRight size={14} />
