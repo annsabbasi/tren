@@ -2,6 +2,7 @@ import { Landing } from './components/LandingPage'
 import NewPage from './components/NewPage'
 import RevolutionPage from './components/RevolutionPage'
 import SocialFeedSection from './components/SocialFeedSection'
+import HowItWorksSection from './components/HowItWorksSection'
 
 export default function Home() {
     return (
@@ -10,6 +11,7 @@ export default function Home() {
             <RevolutionPage />
             <NewPage />
             <SocialFeedSection />
+            <HowItWorksSection />
             {/* <New /> */}
         </div>
     )

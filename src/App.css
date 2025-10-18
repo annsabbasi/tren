@@ -329,13 +329,6 @@ h2 {
 .card-inner h3,
 .card-content h3 {
   margin: 0;
-  font-size: 20px;
-  line-height: 1.5;
-  color: #f7f7ff;
-}
-
-.description {
-  margin: 0;
   color: rgba(215, 219, 255, 0.74);
   line-height: 1.6;
 }
@@ -409,6 +402,79 @@ h2 {
   flex-direction: column;
   gap: 18px;
 }
+.media-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.slider-card {
+  flex: 0 0 calc(100% / 4);
+  height: 100%;
+}
+.slider-track {
+  display: flex;
+  transition: transform 360ms ease;
+  width: auto;
+  gap: 20px;
+}
+.slider-window {
+  overflow: hidden;
+  border-radius: 26px;
+}
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.slider-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(130, 146, 255, 0.4);
+  background: radial-gradient(circle at top, rgba(120, 132, 255, 0.18), rgba(23, 30, 63, 0.7));
+  color: #f6f7ff;
+  font-size: 24px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.slider-nav:hover {
+  transform: translateY(-2px);
+  border-color: rgba(168, 187, 255, 0.65);
+}
+
+.slider-nav:focus-visible {
+  outline: 2px solid rgba(173, 189, 255, 0.8);
+  outline-offset: 4px;
+}
+
+.slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(133, 146, 255, 0.25);
+  padding: 0;
+  cursor: pointer;
+  transition: background 200ms ease, width 200ms ease;
+}
+
+.slider-dot.is-active {
+  width: 32px;
+  background: linear-gradient(120deg, #76b6ff, #b192ff);
+}
 
 @media (max-width: 768px) {
   .social-feed-section {
@@ -419,10 +485,29 @@ h2 {
   .card-content {
     padding: 28px;
   }
+
+  .slider-controls {
+    gap: 14px;
+  }
+
+  .slider-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 540px) {
   .grid {
     gap: 22px;
+  }
+
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .slider-dot.is-active {
+    width: 26px;
   }
 }
