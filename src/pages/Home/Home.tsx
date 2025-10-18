@@ -1,5 +1,6 @@
 import AiStrategies from './components/AiStrategies'
 import { Landing } from './components/LandingPage'
+import OurInvestorCard from './components/OurInvestorCard'
 import PreFooter from './components/PreFooter'
 import PricingPage from './components/pricing/PricingPage'
 import RevolutionBullCard from './components/RevolutionBullCard'
@@ -13,6 +14,7 @@ export default function Home() {
             <RevolutionPage />
             <RevolutionBullCard />
             <RevolutionSlider />
+            <OurInvestorCard />
             <AiStrategies />
             <PricingPage />
             <PreFooter />

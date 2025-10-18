@@ -18,19 +18,19 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center justify-center gap-2">
                     <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
-                        <img src={Facebook} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                        <img src={Facebook} alt="Facebook" className="w-4 h-4 group-hover:brightness-0 transition-colors duration-200" />
                     </span>
                     <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
-                        <img src={X} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                        <img src={X} alt="Facebook" className="w-4 h-4 group-hover:brightness-0 transition-colors duration-200" />
                     </span>
                     <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
-                        <img src={Instagram} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                        <img src={Instagram} alt="Facebook" className="w-4 h-4 brightness-[100] group-hover:brightness-0 transition-colors duration-200" />
                     </span>
                     <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
-                        <img src={Discord} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                        <img src={Discord} alt="Facebook" className="w-4 h-4 group-hover:brightness-0 transition-colors duration-200" />
                     </span>
                     <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
-                        <img src={Pintrest} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                        <img src={Pintrest} alt="Facebook" className="w-4 h-4 group-hover:brightness-0 transition-colors duration-200" />
                     </span>
                 </div>
             </div>
@@ -45,8 +45,8 @@ const Footer = () => {
 
                     {/* App store buttons */}
                     <div className="flex gap-3 mb-10">
-                        <img src={PlayApp} alt="playApp" className="w-32" />
-                        <img src={AppStore} alt="appStore" className="w-32" />
+                        <img src={PlayApp} alt="playApp" className="w-32 cursor-pointer" />
+                        <img src={AppStore} alt="appStore" className="w-32 cursor-pointer" />
                     </div>
 
                     {/* Newsletter */}
