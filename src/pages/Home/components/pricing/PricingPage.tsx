@@ -5,6 +5,28 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { X, Zap, ChevronRight, BadgeCheck } from 'lucide-react';
 import { pricingData, type PricingTier } from '@/Content/pricingData';
 
+// Gradient configuration function
+const getCardGradient = (tierId: string) => {
+    const gradients = {
+        basic: 'bg-gradient-to-b from-[rgba(20,232,147,0.1)] to-[rgba(6,4,12,0.1)]',
+        pro: 'bg-gradient-to-b from-[rgba(79,57,172,0.25)] to-[rgba(6,4,12,0.25)]',
+        max: 'bg-gradient-to-b from-[rgba(20,232,147,0.5)] to-[rgba(6,4,12,0.5)]',
+        expert: 'bg-gradient-to-b from-[rgba(79,57,172,0.65)] to-[rgba(6,4,12,0.65)]',
+    };
+    return gradients[tierId as keyof typeof gradients] || gradients.basic;
+};
+
+// Gradient overlay component
+const GradientOverlay = ({ tierId }: { tierId: string }) => (
+    <div
+        className={`
+      absolute top-0 left-0 right-0 h-1/3 pointer-events-none
+      bg-gradient-to-b ${getCardGradient(tierId)} opacity-60
+      blur-[1px] transition-all duration-300
+    `}
+    />
+);
+
 const FeatureIcon = ({ included }: { included: boolean }) =>
     included ? <BadgeCheck className="w-5 h-5 text-[#14E893]" /> : <X className="w-[17px] h-[17px] text-[#E81418] border border-red-600 rounded-full p-[1px] mr-1" />;
 
@@ -21,46 +43,58 @@ const PricingCard = ({ tier, billingPeriod, isSticky = false }: { tier: PricingT
       ${isSticky ? 'sticky top-6 z-10 shadow-lg transition-all duration-200' : ''}
       transition-all duration-200
     `}>
-            {/* ${tier.popular ? 'ring-1 ring-[#14E893]' : ''} */}
+            {/* Gradient Overlay */}
+            <GradientOverlay tierId={tier.id} />
 
             {tier.popular && (
-                <div className="absolute top-8 -right-14 bg-[#14E893] text-black text-xs font-semibold px-16 py-1 transform rotate-45">
+                <div className="absolute top-8 -right-14 bg-[#14E893] text-black text-xs font-semibold px-16 py-1 transform rotate-45 z-10">
                     Most popular
                 </div>
             )}
 
-            <CardContent className="p-0">
-                <div className="pt-2 pb-6 px-8">
-                    <h4 className="text-gry-400 text-md font-medium mb-2">{tier.name}</h4>
+            <CardContent className="p-0 relative z-1">
+                {/* Top section with gradient background */}
+                <div className="relative">
+                    {/* <div className={`
+            absolute top-52 left-0 right-0 !h-40
+            bg-gradient-to-b ${getCardGradient(tier.id)} opacity-20
+            pointer-events-none
+          `} /> */}
+                    <div className="pt-2 pb-6 px-8 relative z-1">
+                        <h4 className="text-gray-400 text-md font-medium mb-2">{tier.name}</h4>
 
-                    <div className="flex items-center gap-3 mb-3">
-                        <h3 className="text-white text-3xl font-medium">{displayPrice}</h3>
-                        {tier.savings && (
-                            <span className="special-btn !py-2 !text-xs flex items-center !px-4">
-                                {tier.savings}
+                        <div className="flex items-center gap-3 mb-3">
+                            <h3 className="text-white text-3xl font-medium">{displayPrice}</h3>
+                            {tier.savings && (
+                                <span className={`!py-2 !text-xs flex items-center !px-4 ${['Max plan', 'Expert plan'].includes(tier.name) ? '!bg-black !text-white rounded-full cursor-pointer' : 'special-btn'}`}>
+                                    {tier.savings}
+                                </span>
+                            )}
+                        </div>
+
+                        <p className="text-gray-400 text-sm">
+                            / month{' '}
+                            <span className="text-white ml-2">
+                                {billingPeriod === 'yearly' ? `${tier.yearlyPrice} / year` : 'billed monthly'}
                             </span>
-                        )}
+                        </p>
                     </div>
-
-                    <p className="text-gray-400 text-sm">
-                        / month{' '}
-                        <span className="text-white ml-2">
-                            {billingPeriod === 'yearly' ? `${tier.yearlyPrice} / year` : 'billed monthly'}
-                        </span>
-                    </p>
                 </div>
 
                 <div className="border-t border-gray-700 w-full" />
-                <div className="px-8 py-6">
-                    <button className='special-btn !py-2 !px-4 flex items-center justify-center gap-2 text-md w-full' >
+
+                {/* Button section - gradient stops here */}
+                <div className="px-8 py-6 relative">
+                    <button className='special-btn !py-2 !px-4 flex items-center justify-center gap-2 text-md w-full relative z-1' >
                         Subscribe now
                         <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
+
                 <div className="border-t border-gray-700 w-full" />
 
+                {/* Features section - no gradient */}
                 <div className="px-7 py-4">
-                    {/* <Accordion type="single" collapsible className="space-y-6"> */}
                     <Accordion type="multiple" className="space-y-6" defaultValue={Object.keys(tier.features)}>
                         {Object.entries(tier.features).map(([key, feature]) => (
                             <AccordionItem key={key} value={key} className="border-0 my-4">
@@ -80,7 +114,7 @@ const PricingCard = ({ tier, billingPeriod, isSticky = false }: { tier: PricingT
                     </Accordion>
                 </div>
             </CardContent>
-        </Card >
+        </Card>
     );
 };
 

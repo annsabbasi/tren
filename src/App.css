@@ -1,6 +1,15 @@
 body {
   overflow-x: hidden;
   background-color: black !important;
+  font-family: SuisseIntl-Light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: SuisseIntl-Medium;
 }
 
 .home-main {
@@ -33,7 +42,7 @@ body {
 }
 
 
-.landing-main::before {
+/* .landing-main::before {
   content: '';
   position: absolute;
   background-image: url('./assets/Home/sidebox.png');
@@ -45,7 +54,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 
 .landing-gradient::after {
   content: '';
@@ -224,4 +233,9 @@ body {
   box-shadow:
     10px 0px 30px 0px rgba(40, 173, 155, 0.5),
     -20px 0px 40px 0px rgba(78, 58, 172, 0.5);
+}
+
+.Footer li:hover {
+  color: white;
+  cursor: pointer;
 }

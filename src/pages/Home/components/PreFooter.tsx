@@ -8,7 +8,7 @@ import TechTren from '../../../assets/Home/TechTren.svg';
 
 const PreFooter = () => {
     return (
-        <section className="relative w-full text-center pt-40 px-6 md:px-12 overflow-hidden max-w-6xl mx-auto">
+        <section className="relative w-full text-center pt-40 md:px-12 max-w-6xl mx-auto">
 
             <div className="relative max-w-5xl mx-auto space-y-10">
                 <div className="absolute !-left-16 top-28 md:left-10">

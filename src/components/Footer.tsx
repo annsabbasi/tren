@@ -1,55 +1,75 @@
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import TechTren from '../assets/Home/logo.png';
+import Facebook from '../assets/Home/facebook.svg';
+import X from '../assets/Home/x.svg';
+import Instagram from '../assets/Home/instagram.svg';
+import Pintrest from '../assets/Home/pintrest.svg';
+import Discord from '../assets/Home/discord.svg';
+import AppStore from '../assets/Home/appStore.svg';
+import PlayApp from '../assets/Home/playApp.svg';
+import { ChevronRight } from "lucide-react";
 
 const Footer = () => {
     return (
-        <footer className="w-full bg-black text-gray-300 py-12 px-6 md:px-16 border-t border-gray-800">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+        <footer className="Footer w-full max-w-6xl mx-auto pt-16 px-4">
+            <div className="flex items-center justify-between pb-8">
+                <div className="flex items-center gap-2">
+                    <img src={TechTren} alt="TechTren" className="w-48" />
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                    <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
+                        <img src={Facebook} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                    </span>
+                    <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
+                        <img src={X} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                    </span>
+                    <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
+                        <img src={Instagram} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                    </span>
+                    <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
+                        <img src={Discord} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                    </span>
+                    <span className="group border border-gray-600 p-2 rounded-full cursor-pointer hover:bg-white">
+                        <img src={Pintrest} alt="Facebook" className="w-4 h-4 group-hover:fill-black transition-colors duration-200" />
+                    </span>
+                </div>
+            </div>
+            {/* <hr /> */}
+            <div className="border-t pt-12 grid grid-cols-1 md:grid-cols-4 gap-10 justify-items-center text-gray-400">
                 {/* --- Left Section --- */}
-                <div className="space-y-5">
-                    {/* Logo placeholder */}
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-gray-700 rounded-full" />
-                        <h2 className="text-xl font-semibold text-white">Techtren</h2>
-                    </div>
-
-                    <p className="text-sm leading-relaxed text-gray-400">
+                <div className="space-y-5 max-w-xs">
+                    <p className="text-sm leading-relaxed pr-10 text-gray-300">
                         AI-powered predictions, real-time data, and investor communities —
                         all in one platform.
                     </p>
 
                     {/* App store buttons */}
-                    <div className="flex gap-3">
-                        <div className="w-32 h-10 bg-gray-800 rounded-md" /> {/* App Store */}
-                        <div className="w-32 h-10 bg-gray-800 rounded-md" /> {/* Google Play */}
+                    <div className="flex gap-3 mb-10">
+                        <img src={PlayApp} alt="playApp" className="w-32" />
+                        <img src={AppStore} alt="appStore" className="w-32" />
                     </div>
 
                     {/* Newsletter */}
                     <div>
-                        <h4 className="text-white font-semibold mb-2">
+                        <h4 className="text-white font-medium mb-2">
                             Sign up Newsletter
                         </h4>
                         <p className="text-sm text-gray-400 mb-3">
                             Learn the numbers that spell success for your business!
                         </p>
-                        <div className="flex items-center bg-gray-800 rounded-full overflow-hidden max-w-xs">
+                        <div className="flex items-centermax-w-xs border px-2 py-1 rounded-[20px] mt-4">
                             <Input
                                 type="email"
                                 placeholder="Enter email address"
-                                className="bg-transparent border-none focus-visible:ring-0 focus:outline-none text-gray-200 placeholder-gray-500"
+                                className="!bg-transparent border-none focus-visible:ring-0 focus:outline-none text-gray-200 placeholder-gray-500"
                             />
-                            <Button
-                                size="icon"
-                                className="rounded-full bg-gradient-to-r from-purple-600 to-green-500 hover:opacity-80"
-                            >
-                                →
-                            </Button>
+                            <span className="special-btn !py-0 !px-3 self-stretch flex items-center "> <ChevronRight className="h-4 w-4" /> </span>
                         </div>
                     </div>
                 </div>
 
                 {/* --- Quick Links --- */}
-                <div>
+                <div className="text-center md:text-left">
                     <h4 className="text-white font-semibold mb-4">Quick links</h4>
                     <ul className="space-y-2 text-sm text-gray-400">
                         <li>Home</li>
@@ -63,7 +83,7 @@ const Footer = () => {
                 </div>
 
                 {/* --- Products --- */}
-                <div>
+                <div className="text-center md:text-left">
                     <h4 className="text-white font-semibold mb-4">Products</h4>
                     <ul className="space-y-2 text-sm text-gray-400">
                         <li>Financial GPT</li>
@@ -81,7 +101,7 @@ const Footer = () => {
                 </div>
 
                 {/* --- Resources --- */}
-                <div>
+                <div className="text-center md:text-left">
                     <h4 className="text-white font-semibold mb-4">Resources</h4>
                     <ul className="space-y-2 text-sm text-gray-400">
                         <li>Journals</li>
@@ -96,13 +116,16 @@ const Footer = () => {
                 </div>
             </div>
 
+            <hr className="mt-12" />
             {/* --- Bottom Section --- */}
-            <div className="mt-12 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 border-t border-gray-800 pt-6">
-                <p>© 2025 Tech Tren. All Rights Reserved.</p>
+            <div className=" flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 py-4">
+                <p className="!text-xs">© 2025 Tech Tren. All Rights Reserved.</p>
                 <div className="flex gap-4 mt-3 md:mt-0">
-                    <p>Terms of services</p>
-                    <span>|</span>
-                    <p>Privacy statement</p>
+                    <ul className="flex items-center gap-2">
+                        <li>Terms of Services</li>
+                        <span>|</span>
+                        <li>Privacy statement</li>
+                    </ul>
                 </div>
             </div>
         </footer>

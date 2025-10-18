@@ -3,8 +3,16 @@
 
 /* === Font Face Definition === */
 @font-face {
-  font-family: 'SuisseIntl';
-  src: url('../assets/font/SuisseIntl-Medium/SuisseIntl-Medium.ttf') format('truetype');
+  font-family: 'SuisseIntl-Medium';
+  src: url('./assets/font/SuisseIntl-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SuisseIntl-Light';
+  src: url('./assets/font/SuisseIntl-Light.ttf');
   font-weight: 500;
   font-style: normal;
   font-display: swap;

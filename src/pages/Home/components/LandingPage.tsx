@@ -31,12 +31,8 @@ function AnimatedGradient() {
 
 export function StatBubble() {
     return (
-        <div className="bg-white/5 backdrop-blur-sm
- rounded-2xl px-6 py-2 border-r border-l">
-
+        <div className="bg-white/5 backdrop-blur-sm rounded-3xl px-6 py-4 border-r border-l">
             <div className="flex items-center gap-4">
-                {/* <Zap className="brand" size={16} /> */}
-
                 <img src={flash} alt="light" className="size-10" />
                 <div className="flex text-sm flex-col text-start">
                     <span className="text-muted-foreground text-base">10,000+</span>
@@ -49,8 +45,7 @@ export function StatBubble() {
 
 export function TrustBubble() {
     return (
-        <div className="bg-white/5 backdrop-blur-sm
- rounded-2xl px-6 py-2 border-r border-l">
+        <div className="bg-white/5 backdrop-blur-sm rounded-3xl px-6 py-4 border-r border-l">
             <div className="flex items-center gap-4">
                 {/* <Zap className="brand" size={16} /> */}
                 <img src={userReview} alt="light" className="w-24" />
@@ -107,7 +102,7 @@ export function Landing() {
                     <span className=" ml-3"> <ArrowRight size={16} /> </span>
                 </div>
 
-                <h1 className="mx-auto max-w-5xl text-center text-balance text-4xl md:text-6xl font-semibold">
+                <h1 className="mx-auto max-w-5xl text-center text-balance text-4xl md:text-6xl font-light">
                     Smarter Tech. Smarter Investing.
                 </h1>
                 <p className="mx-auto mt-5 max-w-lg text-center text-gray-300 text-lg font-extralight">
