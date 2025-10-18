@@ -110,10 +110,6 @@ export function Landing() {
                 </p>
 
                 <div className="mt-6 flex items-center justify-center gap-3">
-                    {/* <Button className="rounded-full px-3 pl-5 py-5 text-primary-foreground special-btn cursor-pointer hover:scale-110 transition-all ">
-                        Start free trial
-                        <span className=""> <ChevronRight size={14} /> </span>
-                    </Button> */}
                     <Button className="special-btn hover:scale-110 gradient-box-shadow">
                         Start free trial
                         <span className="ml-1">

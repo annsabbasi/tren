@@ -11,13 +11,12 @@ import AiStrategyVd from '../../../assets/Home/HOMEPAGE_HEADER_WEB.mp4';
 
 export default function AiStrategies() {
     return (
-        // <section className='relative px-5 py-28 max-w-6xl mx-auto'>
         <section className='relative py-28 pt-12 mx-auto'>
             {/* Add a container div with higher z-index for content */}
             <div className='relative max-w-6xl mx-auto'>
-                <div className=' flex items-center justify-between gap-8 mb-20'>
+                <div className='flex items-center justify-between gap-8 mb-20'>
                     <h1 className='text-5xl'>AI Says: 65% chance of upward trend.</h1>
-                    <p className='max-w-xl text-sm text-gray-300'>Tech Tren operate with full transparency, directly passing your investment to the market, ensuring fair pricing and execution. With a commitment to regulatory compliance, they provide a secure environment that protects your investments..</p>
+                    <p className='max-w-xl text-sm text-gray-300'>Tech Tren operate with full transparency, directly passing your investment to the market, ensuring fair pricing and execution. With a commitment to regulatory compliance, they provide a secure environment that protects your investments.</p>
                 </div>
 
                 <div className='!bg-black relative ai-strategies-main w-4/5 mx-auto !overflow-visible'>
@@ -25,14 +24,31 @@ export default function AiStrategies() {
                         <img src={LogoSm} alt="logo" className='w-12' />
                         <h3 className='text-4xl'>Welcome to Financial GPT</h3>
                         <p className='max-w-xl text-base text-gray-400 text-center'>Ask me anything about financial markets, trading strategies, stock analysis, economic trends, or investment insights. I'm here to help you make informed financial decisions.</p>
-                        <div className='w-full h-full relative'>
-                            <img src={AiStrategiesGIF} alt="gif" className='w-2/5 h-40 mx-auto' />
-                            {/* <div className='ai-gif-gradient absolute top-10 right-68 w-2/5 h-2/5'></div> */}
+
+                        {/* Updated GIF section with blend mode */}
+                        <div className='w-full h-full relative flex justify-center'>
+                            <div className='relative w-2/5 h-40 mx-auto'>
+                                <img
+                                    src={AiStrategiesGIF}
+                                    alt="gif"
+                                    className='w-full h-full object-cover rounded-lg'
+                                />
+                                {/* Gradient overlay with mix blend mode */}
+                                <div
+                                    className='absolute inset-0 rounded-lg mix-blend-color'
+                                    style={{
+                                        background: 'linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%)',
+                                    }}
+                                ></div>
+                            </div>
                         </div>
-                        <div className=" right-2/6 top-25 w-2/5">
+
+                        <div className="w-2/5">
                             <Input label="What can i help you with?" />
                         </div>
                     </div>
+
+                    {/* Tag components */}
                     <div className="!absolute -right-20 top-[58%] w-72 z-[1]">
                         <Tag label="Market analysis and trends" imgVal={marketSvg} />
                     </div>
@@ -47,11 +63,11 @@ export default function AiStrategies() {
                     </div>
                 </div>
 
+                {/* Decorative elements */}
                 <div className="">
-                    <img src={singleBox} alt="box" className="absolute -left-[200px] -bottom-30 object-contain w-[60%]" />
-                    <div className="ai-strategy-shade-purple -bottom-20 -left-[300px]"></div>
+                    <img src={singleBox} alt="box" className="absolute -left-[200px] -bottom-40 object-contain w-[60%]" />
+                    <div className="ai-strategy-shade-purple -bottom-60 -left-[300px]"></div>
                 </div>
-
 
                 <div className="">
                     <img src={singleBox} alt="box" className="absolute -right-[200px] top-32 object-contain w-[60%]" />
@@ -59,14 +75,14 @@ export default function AiStrategies() {
                 </div>
             </div>
 
-            {/* <div className="absolute top-48 h-[740px]  w-full -z-10 overflow-hidden"> */}
+            {/* Background video */}
             <div className="absolute top-40 h-full w-full -z-10 overflow-hidden">
                 <video
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover opacity-50"
+                    className="w-full h-[660px] object-cover opacity-20"
                 >
                     <source src={AiStrategyVd} />
                 </video>
@@ -80,7 +96,6 @@ export default function AiStrategies() {
                     }}
                 />
             </div>
-
-        </section >
+        </section>
     )
 }

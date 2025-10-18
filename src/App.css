@@ -1,6 +1,8 @@
 body {
   overflow-x: hidden;
-  background-color: black !important;
+  /* background-color: black !important; */
+  /* background-color: #05030A !important; */
+  background-color: #06040C !important;
   font-family: SuisseIntl-Light;
 }
 
