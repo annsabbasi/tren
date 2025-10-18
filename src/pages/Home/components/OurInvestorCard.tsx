@@ -65,8 +65,8 @@ const LogoMarquee = () => {
       <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[rgba(6,4,12,0.9)] to-transparent z-10 pointer-events-none"></div>
       <div className="absolute rounded-lg right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[rgba(6,4,12,0.9)] to-transparent z-10 pointer-events-none"></div>
 
-      <Marquee pauseOnHover>
-        <MarqueeContent>
+      <Marquee >
+        <MarqueeContent pauseOnHover>
           {partnerLogos.map((logo, i) => (
             <MarqueeItem key={i} className="mx-8 flex-shrink-0">
               <div className="h-14 w-32 flex items-center justify-center">
