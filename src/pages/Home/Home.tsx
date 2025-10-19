@@ -6,6 +6,7 @@ import PricingPage from './components/pricing/PricingPage'
 import RevolutionBullCard from './components/RevolutionBullCard'
 import RevolutionPage from './components/RevolutionPage'
 import RevolutionSlider from './components/RevolutionSlider'
+import SocialFeeds from './components/SocialFeeds'
 
 export default function Home() {
     return (
@@ -17,6 +18,7 @@ export default function Home() {
             <OurInvestorCard />
             <AiStrategies />
             <PricingPage />
+            <SocialFeeds/>
             <PreFooter />
             {/* <New /> */}
         </div>

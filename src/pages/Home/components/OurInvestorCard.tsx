@@ -16,12 +16,12 @@ import {
 } from "@/components/ui/shadcn-io/marquee";
 
 // Partner logos
-import logo11 from "../../../assets/Home/logo11.png";
-import logo12 from "../../../assets/Home/logo12.png";
-import logo13 from "../../../assets/Home/logo13.png";
-import logo14 from "../../../assets/Home/logo14.png";
-import logo15 from "../../../assets/Home/logo15.png";
-import logo16 from "../../../assets/Home/logo16.png";
+import logo11 from "../../../assets/homePage1/logo11.png";
+import logo12 from "../../../assets/homePage1/logo11.png";
+import logo13 from "../../../assets/homePage1/logo11.png";
+import logo14 from "../../../assets/homePage1/logo11.png";
+import logo15 from "../../../assets/homePage1/logo11.png";
+import logo16 from "../../../assets/homePage1/logo11.png";
 
 const originalTestimonials = [
   {
