@@ -4,6 +4,15 @@ body {
   /* background-color: #05030A !important; */
   background-color: #06040C !important;
   font-family: SuisseIntl-Light;
+  /* padding: 0; */
+  /* margin: 0; */
+  /* box-sizing: border-box; */
+}
+
+
+html {
+  overflow-y: scroll;
+  /* Always reserve space for scrollbar */
 }
 
 h1,
@@ -16,8 +25,6 @@ h5 {
 
 .home-main {
   background: url("./assets/Home/noise.svg") center center / cover no-repeat;
-  /* z-index: 100 !important; */
-
 }
 
 .glass {
@@ -29,6 +36,18 @@ h5 {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
+.glass-dark {
+  /* background: rgba(20, 20, 20, 0.45); */
+  background: rgba(20, 20, 20, 0.80);
+  /* dark tint with transparency */
+  border-radius: 16px;
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+}
+
+
 .glass-card {
   background: rgba(255, 255, 255, 0.06);
   border-radius: 16px;
@@ -38,7 +57,8 @@ h5 {
 }
 
 .glass-custom {
-  background: rgba(255, 255, 255, 0.06);
+  /* background: rgba(255, 255, 255, 0.06); */
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   backdrop-filter: blur(10px) saturate(150%);
   -webkit-backdrop-filter: blur(10px) saturate(150%);
@@ -59,6 +79,22 @@ h5 {
   background-repeat: no-repeat;
   background-size: cover;
 } */
+.landing-main::before {
+  content: '';
+  position: absolute;
+  background-image: url('./assets/Home/sidebox.png');
+  width: 1400px;
+  height: 400px;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* ✅ perfectly center it */
+  z-index: -2;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 .landing-gradient::after {
   content: '';

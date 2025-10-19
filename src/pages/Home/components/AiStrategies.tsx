@@ -95,6 +95,15 @@ export default function AiStrategies() {
                         WebkitBackdropFilter: 'blur(8px)'
                     }}
                 />
+
+                <div
+                    className="absolute bottom-16 left-0 w-full h-48"
+                    style={{
+                        background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, transparent 100%)',
+                        backdropFilter: 'blur(8px)',
+                        WebkitBackdropFilter: 'blur(8px)'
+                    }}
+                />
             </div>
         </section>
     )

@@ -39,80 +39,88 @@ export default function HowItWorksSection() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mt-8">
 
                 {/* Step 1 */}
-                <Card className="relative flex flex-col items-center text-center p-6 bg-transparent">
-                    {/* Step number badge */}
-                    <div className="absolute -top-5 bg-background border border-border rounded-full w-10 h-10 flex items-center justify-center">
-                        <span className="text-lg font-medium">1</span>
-                    </div>
-
-                    <CardContent className="pt-6 space-y-6">
-                        <h3 className="text-xl font-medium">Search or Ask</h3>
-                        <div className="w-full space-y-2">
-                            <span className="">
-                                <img src={TechCardImg1} alt="TechCardImg1" className="border rounded-2xl h-64" />
-                            </span>
+                <div className="group">
+                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B]">
+                        {/* Step number badge with gradient on hover */}
+                        <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
+                            <span className="text-lg font-medium group-hover:text-white">1</span>
                         </div>
-                        <p className="text-sm text-muted-foreground px-10 mb-10 mt-8 text-gray-400">
-                            Enter your stock, crypto, or question.
-                        </p>
-                    </CardContent>
-                </Card>
+
+                        <CardContent className="pt-6 space-y-6">
+                            <h3 className="text-xl font-medium">Search or Ask</h3>
+                            <div className="w-full space-y-2">
+                                <span className="">
+                                    <img src={TechCardImg1} alt="TechCardImg1" className="border rounded-2xl h-64 transition-all duration-300" />
+                                </span>
+                            </div>
+                            <p className="text-sm text-muted-foreground px-10 mb-10 mt-8 text-gray-400">
+                                Enter your stock, crypto, or question.
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
 
                 {/* Step 2 */}
-                <Card className="relative flex flex-col items-center text-center p-6 bg-transparent">
-                    {/* Step number badge */}
-                    <div className="absolute -top-5 bg-background border border-border rounded-full w-10 h-10 flex items-center justify-center">
-                        <span className="text-lg font-medium">2</span>
-                    </div>
+                <div className="group">
+                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B]">
+                        {/* Step number badge with gradient on hover */}
+                        <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
+                            <span className="text-lg font-medium group-hover:text-white">2</span>
+                        </div>
 
-                    <CardContent className="pt-6 space-y-6">
-                        <h3 className="text-xl font-medium">AI Analysis</h3>
-                        <div className="w-full space-y-2">
-                            <div className="relative border rounded-2xl flex items-end justify-end h-64 px-6">
-                                <img src={VectorInput} alt="VectorInput" className="self-end" />
+                        <CardContent className="pt-6 space-y-6">
+                            <h3 className="text-xl font-medium">AI Analysis</h3>
+                            <div className="w-full space-y-2">
+                                <div className="relative border rounded-2xl flex items-end justify-end h-64 px-6 transition-all duration-300">
+                                    <img src={VectorInput} alt="VectorInput" className="self-end" />
 
-                                {/* Updated Signals GIF with blend mode */}
-                                <div className="absolute w-36 h-auto left-1/2 -translate-x-1/2 top-2">
-                                    <img
-                                        src={Signals}
-                                        alt="Signals"
-                                        className="w-full h-full object-contain"
-                                    />
-                                    {/* Gradient overlay with mix blend mode */}
-                                    <div
-                                        className="absolute inset-0 mix-blend-color"
-                                        style={{
-                                            background: 'linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%)',
-                                        }}
-                                    ></div>
+                                    {/* Updated Signals GIF with blend mode */}
+                                    <div className="absolute w-36 h-auto left-1/2 -translate-x-1/2 top-2">
+                                        <img
+                                            src={Signals}
+                                            alt="Signals"
+                                            className="w-full h-full object-contain"
+                                        />
+                                        {/* Gradient overlay with mix blend mode */}
+                                        <div
+                                            className="absolute inset-0 mix-blend-color"
+                                            style={{
+                                                background: 'linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%)',
+                                            }}
+                                        ></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <p className="text-sm text-muted-foreground px-10 mb-10 mt-8 text-gray-400">
-                            Our AI analyzes market data and trends.
-                        </p>
-                    </CardContent>
-                </Card>
+                            <p className="text-sm text-muted-foreground px-10 mb-10 mt-8 text-gray-400">
+                                Our AI analyzes market data and trends.
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
 
                 {/* Step 3 */}
-                <Card className="relative flex flex-col items-center text-center p-6 bg-transparent">
-                    {/* Step number badge */}
-                    <div className="absolute -top-5 bg-background border border-border rounded-full w-10 h-10 flex items-center justify-center">
-                        <span className="text-lg font-medium">3</span>
-                    </div>
+                <div className="group">
+                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B]">
 
-                    <CardContent className="pt-6 space-y-6">
-                        <h3 className="text-xl font-medium">Get Insights</h3>
-                        <div className="w-full space-y-2">
-                            <span className="">
-                                <img src={TechCardImg3} alt="TechCardImg3" className="border rounded-2xl h-64" />
-                            </span>
+                        {/* Step number badge with gradient on hover */}
+                        <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
+                            <span className="text-lg font-medium group-hover:text-white">3</span>
                         </div>
-                        <p className="text-sm text-muted-foreground px-10 mb-10 mt-8 text-gray-400">
-                            Receive actionable investment insights.
-                        </p>
-                    </CardContent>
-                </Card>
+
+                        <CardContent className="pt-6 space-y-6">
+                            <h3 className="text-xl font-medium">Get Insights</h3>
+                            <div className="w-full space-y-2">
+                                <span className="">
+                                    <img src={TechCardImg3} alt="TechCardImg3" className="border rounded-2xl h-64 transition-all duration-300" />
+                                </span>
+                            </div>
+                            <p className="text-sm text-muted-foreground px-10 mb-10 mt-8 text-gray-400">
+                                Receive actionable investment insights.
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
+
             </div>
 
             <div className="mt-12 flex items-center justify-center gap-3 mb-12">
