@@ -40,7 +40,7 @@ export default function HowItWorksSection() {
 
                 {/* Step 1 */}
                 <div className="group">
-                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B]">
+                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B] glass-dark2">
                         {/* Step number badge with gradient on hover */}
                         <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
                             <span className="text-lg font-medium group-hover:text-white">1</span>
@@ -62,7 +62,7 @@ export default function HowItWorksSection() {
 
                 {/* Step 2 */}
                 <div className="group">
-                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B]">
+                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B] glass-dark2">
                         {/* Step number badge with gradient on hover */}
                         <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
                             <span className="text-lg font-medium group-hover:text-white">2</span>
@@ -100,7 +100,7 @@ export default function HowItWorksSection() {
 
                 {/* Step 3 */}
                 <div className="group">
-                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B]">
+                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B] glass-dark2">
 
                         {/* Step number badge with gradient on hover */}
                         <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
