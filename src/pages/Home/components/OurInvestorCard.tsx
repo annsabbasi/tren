@@ -108,7 +108,7 @@ const LogoMarquee = () => {
 export default function OurInvestorCard() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
-  const [count, _] = React.useState(originalTestimonials.length);
+  // const [count, _] = React.useState(originalTestimonials.length);
 
   React.useEffect(() => {
     if (!api) return;
