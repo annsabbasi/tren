@@ -17,11 +17,11 @@ import {
 
 // Partner logos
 import logo11 from "../../../assets/Home/logo11.png";
-import logo12 from "../../../assets/Home/logo12.png";
-import logo13 from "../../../assets/Home/logo13.png";
-import logo14 from "../../../assets/Home/logo14.png";
-import logo15 from "../../../assets/Home/logo15.png";
-import logo16 from "../../../assets/Home/logo16.png";
+import logo12 from "../../../assets/Home/logo11.png";
+import logo13 from "../../../assets/Home/logo11.png";
+import logo14 from "../../../assets/Home/logo11.png";
+import logo15 from "../../../assets/Home/logo11.png";
+import logo16 from "../../../assets/Home/logo11.png";
 
 const originalTestimonials = [
   {
@@ -173,7 +173,7 @@ export default function OurInvestorCard() {
   };
 
   return (
-    <section className="relative text-white py-20 rounded-tl-3xl rounded-tr-3xl max-w-6xl mx-auto overflow-hidden">
+    <section className="relative py-20 rounded-tl-3xl rounded-tr-3xl max-w-6xl mx-auto overflow-hidden">
       {/* Gradient overlay */}
       <div className="absolute top-0 left-0 w-full h-[450px] bg-[linear-gradient(180deg,rgba(20,232,147,0.1)_0%,rgba(6,4,12,0.1)_100%)] pointer-events-none -z-[1]"></div>
 

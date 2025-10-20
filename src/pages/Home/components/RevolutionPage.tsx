@@ -95,7 +95,7 @@ export function Input({ label }: { label: string }) {
                 id="revolution-inp"
                 placeholder={label}
                 className="outline-0 bg-transparent opacity-70 w-full"
-                disabled
+            // disabled
             />
         </div>
     )
