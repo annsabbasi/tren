@@ -11,10 +11,10 @@ import { cn } from "@/lib/utils";
 
 import logosm from "../../../assets/home/logosm.svg";
 import Thread from "../../../assets/home/thread.svg";
-import group11 from "../../../assets/homePage1/group11.png";
-import group12 from "../../../assets/homePage1/group12.png";
-import group13 from "../../../assets/homePage1/group13.png";
-import group14 from "../../../assets/homePage1/group14.png";
+import group11 from "../../../assets/home/group11.png";
+import group12 from "../../../assets/home/group12.png";
+import group13 from "../../../assets/home/group13.png";
+import group14 from "../../../assets/home/group14.png";
 
 const originalFeedItems = [
   {
@@ -44,6 +44,27 @@ const originalFeedItems = [
   },
   {
     id: 4,
+    company: "Tech Tren",
+    time: "6d ago",
+    text: "🔮 Analysts predict significant shifts in the market over the next quarter.",
+    image: group14,
+  },
+  {
+    id: 5,
+    company: "Tech Tren",
+    time: "3d ago",
+    text: "🔍 The rise of decentralized finance continues to reshape the financial landscape.",
+    image: group12,
+  },
+  {
+    id: 6,
+    company: "Tech Tren",
+    time: "4d ago",
+    text: "📊 Long-term vs short-term investing: which strategy suits your goals?",
+    image: group13,
+  },
+  {
+    id: 7,
     company: "Tech Tren",
     time: "6d ago",
     text: "🔮 Analysts predict significant shifts in the market over the next quarter.",
@@ -93,7 +114,7 @@ export default function SocialFeedsSection() {
       };
     }
     // Immediate neighbors (1 away): medium size, high opacity
-    if (distanceFromActive === 1 || distanceFromActive === 3) { // 3 accounts for circular nature with 4 items
+    if (distanceFromActive === 1) { // 3 accounts for circular nature with 4 items
       return {
         width: "0.6rem", // 12px - medium
         height: "0.6rem", // 6px
@@ -103,8 +124,8 @@ export default function SocialFeedsSection() {
     // Next neighbors (2 away): small size, medium opacity
     if (distanceFromActive === 2) {
       return {
-        width: "0.4rem", // 8px - small
-        height: "0.4rem", // 4px
+        width: "0.5rem", // 8px - small
+        height: "0.5rem", // 4px
         opacity: 0.5
       };
     }
@@ -123,12 +144,12 @@ export default function SocialFeedsSection() {
 
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="flex items-center justify-center gap-2 text-[24px] text-gray-400 mb-3 tracking-wide">
-            <Heart className="w-[24px] h-[24px] text-gray-400" />
+          <p className="flex items-center justify-center gap-2 text-base text-gray-400 mb-3 tracking-wide">
+            <Heart className="w-5 h-5 text-gray-400" />
             Social feeds and threads
           </p>
 
-          <h2 className="text-xl sm:text-[68px] font-[450] leading-[72px]">
+          <h2 className="text-xl sm:text-6xl font-medium leading-16">
             Join <span className="text-white">10,000+</span> investors
             <br className="hidden sm:block" />
             sharing insights in real time.
@@ -207,8 +228,8 @@ export default function SocialFeedsSection() {
           </Carousel>
 
           {/* Pagination Dots - EXACT COPY from OurInvestorCard */}
-          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 mt-10 flex justify-center">
-            <div className="flex items-center gap-3 px-6 py-2 bg-black/80 border border-gray-700/40 rounded-full">
+          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10 mt-10 flex justify-center">
+            <div className="flex items-center gap-3 px-6 py-3 bg-black border border-gray-700/40 rounded-full">
               {Array.from({ length: originalFeedItems.length }).map((_, i) => {
                 const dotStyle = getDotStyle(i);
                 return (
@@ -267,37 +288,41 @@ export default function SocialFeedsSection() {
             <div className="px-6 py-6 max-h-[60vh] overflow-auto">
               {/* Show the longText if exists for the selected item, else show placeholder */}
               <div className="prose prose-invert text-gray-200">
-                {originalFeedItems.find((f) => f.id === openId)?.longText ? (
-                  <>
-                    {/* Render longText with basic formatting (split by double-newline) */}
-                    {originalFeedItems
-                      .find((f) => f.id === openId)!
-                      .longText.split("\n\n")
-                      .map((para, idx) => (
-                        <p key={idx} className="mb-4">
-                          {para}
+                {(() => {
+                  const selectedItem = originalFeedItems.find((f) => f.id === openId);
+                  if (selectedItem?.longText) {
+                    return (
+                      <>
+                        {/* Render longText with basic formatting (split by double-newline) */}
+                        {selectedItem.longText.split("\n\n").map((para, idx) => (
+                          <p key={idx} className="mb-4">
+                            {para}
+                          </p>
+                        ))}
+                      </>
+                    );
+                  } else {
+                    return (
+                      <>
+                        <h3 className="text-lg font-semibold mb-2">Full post</h3>
+                        <p className="mb-4 text-gray-300">
+                          This is a placeholder for the full content. Replace with
+                          server content or rich HTML when available.
                         </p>
-                      ))}
-                  </>
-                ) : (
-                  <>
-                    <h3 className="text-lg font-semibold mb-2">Full post</h3>
-                    <p className="mb-4 text-gray-300">
-                      This is a placeholder for the full content. Replace with
-                      server content or rich HTML when available.
-                    </p>
-                    <p className="mb-4">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Integer nec odio. Praesent libero. Sed cursus ante
-                      dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
-                      imperdiet. Duis sagittis ipsum.
-                    </p>
-                    <p className="mb-4">
-                      Curabitur tortor. Pellentesque nibh. Aenean quam. In
-                      scelerisque sem at dolor. Maecenas mattis.
-                    </p>
-                  </>
-                )}
+                        <p className="mb-4">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                          Integer nec odio. Praesent libero. Sed cursus ante
+                          dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
+                          imperdiet. Duis sagittis ipsum.
+                        </p>
+                        <p className="mb-4">
+                          Curabitur tortor. Pellentesque nibh. Aenean quam. In
+                          scelerisque sem at dolor. Maecenas mattis.
+                        </p>
+                      </>
+                    );
+                  }
+                })()}
               </div>
             </div>
 

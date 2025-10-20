@@ -239,7 +239,7 @@ export default function OurInvestorCard() {
 
           {/* Pagination Dots - Now showing exactly 7 dots */}
           <div className="mt-10 flex justify-center">
-            <div className="flex items-center gap-3 px-6 py-2 bg-black/80 border border-gray-700/40 rounded-full">
+            <div className="flex items-center gap-3 px-6 py-3 bg-black/80 border border-gray-700/40 rounded-full">
               {Array.from({ length: 7 }).map((_, i) => {
                 const dotStyle = getDotStyle(i);
                 return (

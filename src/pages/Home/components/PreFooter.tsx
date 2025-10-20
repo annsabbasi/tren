@@ -11,7 +11,7 @@ const PreFooter = () => {
         <section className="relative w-full text-center pt-40 md:px-12 max-w-6xl mx-auto">
 
             <div className="relative max-w-5xl mx-auto space-y-10">
-                <div className="absolute !-left-16 top-28 md:left-10">
+                <div className="absolute !-left-16 top-28 md:left-10 z-10">
                     <StatBubble />
                 </div>
 
@@ -56,7 +56,7 @@ const PreFooter = () => {
                     </div>
                 </div>
 
-                <div className="absolute !-right-24 bottom-36 md:right-10 w-88">
+                <div className="absolute !-right-24 bottom-24 md:right-10 w-88">
                     <TrustBubble />
                 </div>
 
