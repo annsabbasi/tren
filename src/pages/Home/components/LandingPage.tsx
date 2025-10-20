@@ -13,15 +13,22 @@ function AnimatedGradient() {
     return (
         <motion.div
             // className="absolute w-[1500px] h-[600px] top-0 left-1/2 -translate-x-1/2 z-[-1] bg-cover bg-center bg-no-repeat"
-            className="absolute w-[1500px] h-[600px] top-0 left-1/2 -translate-x-1/2 z-[-1] bg-cover bg-center bg-no-repeat"
+            // className="absolute w-[1500px] h-[600px] top-0 left-1/2 -translate-x-1/2 z-[-1] bg-cover bg-center bg-no-repeat"
+            // style={{
+            //     backgroundImage: `url(${midgradient})`,
+            // }}
+
+            className="absolute inset-0 -z-10 overflow-hidden "
             style={{
                 backgroundImage: `url(${midgradient})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
             }}
             animate={{
-                x: ['-25%', '25%', '-25%'], // move left → right → left
+                x: ['-25%', '25%', '-25%'],
             }}
             transition={{
-                duration: 30, // total time for a full back-and-forth cycle
+                duration: 30,
                 repeat: Infinity,
                 ease: 'easeInOut',
             }}
@@ -31,7 +38,7 @@ function AnimatedGradient() {
 
 export function StatBubble() {
     return (
-        <div className="bg-white/5 backdrop-blur-sm rounded-3xl px-6 py-4 border-r border-l">
+        <div className="backdrop-blur-sm rounded-3xl px-8 py-4 shadow-[inset_1px_0_1px_rgba(255,255,255,0.1),inset_-1px_0_1px_rgba(255,255,255,0.1)]">
             <div className="flex items-center gap-4">
                 <img src={flash} alt="light" className="size-10" />
                 <div className="flex text-sm flex-col text-start">
@@ -45,7 +52,8 @@ export function StatBubble() {
 
 export function TrustBubble() {
     return (
-        <div className="bg-white/5 backdrop-blur-sm rounded-3xl px-6 py-4 border-r border-l">
+        // <div className="bg-white/5 backdrop-blur-sm rounded-3xl px-6 py-4 border-r border-l">
+        <div className="backdrop-blur-sm rounded-3xl px-8 py-4 shadow-[inset_1px_0_1px_rgba(255,255,255,0.2),inset_-1px_0_1px_rgba(255,255,255,0.2)]">
             <div className="flex items-center gap-4">
                 {/* <Zap className="brand" size={16} /> */}
                 <img src={userReview} alt="light" className="w-24" />
@@ -59,9 +67,6 @@ export function TrustBubble() {
                             <Star size={10} fill="currentColor" />
                             <Star size={10} fill="currentColor" />
                         </div>
-                        {/* <div>
-                            <img src={userReview} alt="users" className="w-14 h-10" />
-                        </div> */}
                         <p className="mt-1">Trustpilot</p>
                     </div>
                 </div>
@@ -94,10 +99,8 @@ export function Landing() {
         // <div className="landing-main landing-gradient relative radial-glow">
         <div className="landing-main relative radial-glow">
             <AnimatedGradient />
-            {/* <div className="bg-grid absolute inset-0 -z-10" aria-hidden /> */}
-            <div className="z-10 mx-auto max-w-6xl px-4 pt-24 md:pt-32">
-                <div className="mb-6 mx-auto flex justify-center border w-fit rounded-4xl px-4 py-1 items-center gap-1 cursor-pointer">
-
+            <div className="z-10 mx-auto max-w-6xl px-4 pt-24 md:pt-36">
+                <div className="mb-6 mx-auto flex justify-center border w-fit rounded-4xl px-4 py-1 items-center gap-1 cursor-pointer text-sm">
                     🌟 What makes you unique
                     <span className=" ml-3"> <ArrowRight size={16} /> </span>
                 </div>
@@ -110,10 +113,6 @@ export function Landing() {
                 </p>
 
                 <div className="mt-6 flex items-center justify-center gap-3">
-                    {/* <Button className="rounded-full px-3 pl-5 py-5 text-primary-foreground special-btn cursor-pointer hover:scale-110 transition-all ">
-                        Start free trial
-                        <span className=""> <ChevronRight size={14} /> </span>
-                    </Button> */}
                     <Button className="special-btn hover:scale-110 gradient-box-shadow">
                         Start free trial
                         <span className="ml-1">

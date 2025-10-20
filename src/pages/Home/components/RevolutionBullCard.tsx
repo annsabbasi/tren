@@ -6,6 +6,7 @@ import singleBox from '../../../assets/Home/singlebox.png';
 import downGraph from '../../../assets/Home/Solid (2).svg';
 import greenBull from '../../../assets/Home/greenbull.png';
 import purpleBull from '../../../assets/Home/purplebull.png';
+import Noise from '../../../assets/Home/noise.svg';
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
@@ -91,10 +92,10 @@ const MarqueeCards = ({
 
 export default function RevolutionBullCard() {
     return (
-        <div className="relative flex items-stretch justify-between gap-6 mx-auto px-8 pb-20 max-w-6xl">
+        <div className="relative flex items-stretch justify-between gap-4 mx-auto pl-8 pb-20 max-w-6xl">
             {/* First Card */}
             <div className="relative pl-4">
-                <Card className="relative overflow-hidden bg-transparent">
+                <Card className="relative overflow-hidden glass-dark">
                     <CardHeader className="pb-4">
                         <div className="relative h-28 mb-4">
                             <img
@@ -136,7 +137,7 @@ export default function RevolutionBullCard() {
             {/* Second Card */}
 
 
-            <Card className="relative overflow-hidden bg-transparent">
+            <Card className="relative overflow-hidden bg-transparent glass-dark">
                 <CardHeader className="pb-4">
                     <div className="relative h-28 mb-4">
                         <img
@@ -154,7 +155,7 @@ export default function RevolutionBullCard() {
                             <h5 className="text-gray-200 mt-1 text-sm">The Fed Lowers Interest Rates: Implications for Tesla Stock</h5>
                             <p className="text-xs text-gray-400 mt-2">1d ago - NASDAQ.com</p>
                         </div>
-                        <div className="glass-custom absolute top-16 -right-16 py-4 pt-6 px-6 w-72">
+                        <div className="glass-custom absolute top-6 -right-16 py-4 pt-6 px-6 w-72">
                             <span>🔥</span>
                             <h5 className="text-gray-200 mt-1 text-sm">Rachel Cruze: 8 Strategies to Reduce Your Essential Expenses</h5>
                             <p className="text-xs text-gray-400 mt-2">1d ago - AMAZON</p>
@@ -185,11 +186,12 @@ export default function RevolutionBullCard() {
             <div className="">
                 <img src={singleBox} alt="box" className="absolute -left-[450px] -top-10 object-contain w-1/2" />
                 <div className="green-shadow -top-10 -left-[450px]"></div>
+                <img src={Noise} alt="" className="absolute top-0 right-80 w-[60%] h-[58%] object-cover" />
             </div>
 
             <div className="">
-                <img src={singleBox} alt="box" className="absolute -right-[380px] top-44 object-contain w-1/2" />
-                <div className="purple-shadow top-20"></div>
+                <img src={singleBox} alt="box" className="absolute -right-[380px] top-44 object-contain w-1/2 -z-90" />
+                <div className="purple-shadow top-20 -z-90"></div>
             </div>
         </div>
     );

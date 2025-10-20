@@ -16,12 +16,12 @@ import {
 } from "@/components/ui/shadcn-io/marquee";
 
 // Partner logos
-import logo11 from "../../../assets/homePage1/logo11.png";
-import logo12 from "../../../assets/homePage1/logo11.png";
-import logo13 from "../../../assets/homePage1/logo11.png";
-import logo14 from "../../../assets/homePage1/logo11.png";
-import logo15 from "../../../assets/homePage1/logo11.png";
-import logo16 from "../../../assets/homePage1/logo11.png";
+import logo11 from "../../../assets/Home/logo11.png";
+import logo12 from "../../../assets/Home/logo11.png";
+import logo13 from "../../../assets/Home/logo11.png";
+import logo14 from "../../../assets/Home/logo11.png";
+import logo15 from "../../../assets/Home/logo11.png";
+import logo16 from "../../../assets/Home/logo11.png";
 
 const originalTestimonials = [
   {
@@ -52,6 +52,27 @@ const originalTestimonials = [
     name: "Emily Wang",
     time: "15 mins ago",
   },
+  {
+    id: 5,
+    rating: 4.8,
+    text: "Exceptional service! The process was seamless and the team was incredibly supportive throughout.",
+    name: "Sarah Johnson",
+    time: "1 hr ago",
+  },
+  {
+    id: 6,
+    rating: 4.9,
+    text: "I'm impressed by the transparency and efficiency of the entire experience. Highly recommend.",
+    name: "Michael Chen",
+    time: "30 mins ago",
+  },
+  {
+    id: 7,
+    rating: 5.0,
+    text: "The app is user-friendly and the customer support was top-notch. Will definitely use again.",
+    name: "Emily Wang",
+    time: "15 mins ago",
+  },
 ];
 
 // Duplicate for seamless loop
@@ -65,8 +86,8 @@ const LogoMarquee = () => {
       <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[rgba(6,4,12,0.9)] to-transparent z-10 pointer-events-none"></div>
       <div className="absolute rounded-lg right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[rgba(6,4,12,0.9)] to-transparent z-10 pointer-events-none"></div>
 
-      <Marquee pauseOnHover>
-        <MarqueeContent>
+      <Marquee >
+        <MarqueeContent pauseOnHover>
           {partnerLogos.map((logo, i) => (
             <MarqueeItem key={i} className="mx-8 flex-shrink-0">
               <div className="h-14 w-32 flex items-center justify-center">
@@ -87,7 +108,7 @@ const LogoMarquee = () => {
 export default function OurInvestorCard() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(originalTestimonials.length);
+  // const [count, _] = React.useState(originalTestimonials.length);
 
   React.useEffect(() => {
     if (!api) return;
@@ -100,20 +121,59 @@ export default function OurInvestorCard() {
     update();
     api.on("select", update);
 
+    // Auto-play with 2 second interval
     const autoplay = setInterval(() => {
-      const index = api.selectedScrollSnap();
-      if (index === testimonials.length - 1) {
-        api.scrollTo(0);
-      } else {
-        api.scrollNext();
-      }
-    }, 4000);
+      api.scrollNext();
+    }, 2000);
 
     return () => clearInterval(autoplay);
   }, [api]);
 
+  // Function to calculate dot style based on position relative to active dot
+  const getDotStyle = (index: number) => {
+    const distanceFromActive = Math.abs(index - current);
+
+    // For 7 dots, we'll have this hierarchy:
+    // Active dot: largest size, full opacity
+    if (distanceFromActive === 0) {
+      return {
+        width: "1rem", // 16px - largest
+        height: "0.5rem", // 8px
+        opacity: 1
+      };
+    }
+    // Immediate neighbors (1 away): medium size, high opacity
+    if (distanceFromActive === 1 || distanceFromActive === 6) { // 6 accounts for circular nature
+      return {
+        // width: "0.75rem", // 12px - medium
+        // height: "0.375rem", // 6px
+        width: "0.6rem", // 12px - medium
+        height: "0.6rem", // 6px
+        opacity: 0.8
+      };
+    }
+    // Next neighbors (2 away): small size, medium opacity
+    if (distanceFromActive === 2 || distanceFromActive === 5) {
+      return {
+        // width: "0.5rem", // 8px - small
+        // height: "0.25rem", // 4px
+        width: "0.4rem", // 8px - small
+        height: "0.4rem", // 4px
+        opacity: 0.5
+      };
+    }
+    // Farthest dots (3 away): smallest size, low opacity
+    return {
+      // width: "0.375rem", // 6px - smallest
+      // height: "0.1875rem", // 3px
+      width: "0.4rem", // 6px - smallest
+      height: "0.4rem", // 3px
+      opacity: 0.3
+    };
+  };
+
   return (
-    <section className="relative text-white py-20 rounded-tl-3xl rounded-tr-3xl max-w-6xl mx-auto overflow-hidden">
+    <section className="relative py-20 rounded-tl-3xl rounded-tr-3xl max-w-6xl mx-auto overflow-hidden">
       {/* Gradient overlay */}
       <div className="absolute top-0 left-0 w-full h-[450px] bg-[linear-gradient(180deg,rgba(20,232,147,0.1)_0%,rgba(6,4,12,0.1)_100%)] pointer-events-none -z-[1]"></div>
 
@@ -147,7 +207,7 @@ export default function OurInvestorCard() {
           <Carousel
             setApi={setApi}
             className="w-full"
-            opts={{ align: "start", loop: false }}
+            opts={{ align: "start", loop: true }}
           >
             <CarouselContent className="-ml-3 md:-ml-4 px-2">
               {testimonials.map((t, i) => (
@@ -163,7 +223,7 @@ export default function OurInvestorCard() {
                       </div>
 
                       <p className="text-gray-400 text-sm leading-relaxed flex-grow mt-2 mb-5">
-                        “{t.text}”
+                        "{t.text}"
                       </p>
 
                       <div className="mt-auto">
@@ -177,21 +237,27 @@ export default function OurInvestorCard() {
             </CarouselContent>
           </Carousel>
 
-          {/* Pagination Dots */}
+          {/* Pagination Dots - Now showing exactly 7 dots */}
           <div className="mt-10 flex justify-center">
-            <div className="flex items-center gap-2 px-6 py-2 bg-black/80 border border-gray-700/40 rounded-full">
-              {Array.from({ length: count }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => api?.scrollTo(i)}
-                  className={cn(
-                    "transition-all duration-300 rounded-full",
-                    current === i
-                      ? "bg-white w-8 h-2"
-                      : "bg-gray-600 w-2 h-2 hover:bg-gray-400"
-                  )}
-                />
-              ))}
+            <div className="flex items-center gap-3 px-6 py-2 bg-black/80 border border-gray-700/40 rounded-full">
+              {Array.from({ length: 7 }).map((_, i) => {
+                const dotStyle = getDotStyle(i);
+                return (
+                  <button
+                    key={i}
+                    onClick={() => api?.scrollTo(i)}
+                    className={cn(
+                      "transition-all duration-300 rounded-full bg-gray-600 hover:bg-gray-400",
+                      current === i && "bg-white"
+                    )}
+                    style={{
+                      width: dotStyle.width,
+                      height: dotStyle.height,
+                      opacity: dotStyle.opacity
+                    }}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

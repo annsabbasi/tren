@@ -12,7 +12,7 @@ import arrowUp from '../../../assets/Home/arrow-up.svg';
 
 export default function RevolutionPage() {
     return (
-        <div className="relative pt-32 pb-20 mx-auto px-8 max-w-6xl">
+        <div className="relative pt-32 pb-5 mx-auto px-6 max-w-6xl">
             <h1 className="mx-auto max-w-3xl text-center text-balance text-4xl md:text-5xl font-light pb-16">Revolutionizing the
                 Investment worldwide</h1>
 
@@ -70,16 +70,14 @@ export default function RevolutionPage() {
 }
 
 
-
 export function Tag({ label, imgVal }: { label: string, imgVal: string }) {
     return (
-        <div className="px-6 py-2 bg-[#141418]/70 rounded-full text-sm flex items-center gap-2 border border-white/10 hover:bg-[#1a1a1f] transition">
+        <div className="px-6 py-2 bg-[#141418]/70 rounded-full text-sm flex items-center gap-2 border border-white/20 hover:bg-[#1a1a1f]/70 transition-all backdrop-blur-md backdrop-saturate-150">
             <span className="inline-block">
                 <img src={imgVal} alt="" />
                 {/* {imgVal} */}
             </span>
             {label}
-            {/* <ArrowRight className="w-3 h-3 text-gray-400" /> */}
             <span>
                 <img src={arrowUp} alt="arrow" className="w-2 h-2 ml-3" />
             </span>
@@ -90,14 +88,14 @@ export function Tag({ label, imgVal }: { label: string, imgVal: string }) {
 
 export function Input({ label }: { label: string }) {
     return (
-        <div className="glass text-white px-4 py-2 flex items-center justify-between border rounded-full mx-auto">
+        <div className="glass text-white px-4 py-2 flex items-center justify-between rounded-full">
             <input
                 type="text"
                 name="revolution-inp"
                 id="revolution-inp"
                 placeholder={label}
-                className="outline-0 bg-transparent opacity-70"
-                disabled
+                className="outline-0 bg-transparent opacity-70 w-full"
+            // disabled
             />
         </div>
     )

@@ -1,4 +1,5 @@
 import AiStrategies from './components/AiStrategies'
+import HowItWorksSection from './components/HowItWorksPage'
 import { Landing } from './components/LandingPage'
 import OurInvestorCard from './components/OurInvestorCard'
 import PreFooter from './components/PreFooter'
@@ -17,6 +18,7 @@ export default function Home() {
             <RevolutionSlider />
             <OurInvestorCard />
             <AiStrategies />
+            <HowItWorksSection />
             <PricingPage />
             <SocialFeeds/>
             <PreFooter />

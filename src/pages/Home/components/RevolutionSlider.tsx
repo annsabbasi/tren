@@ -2,7 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
     Marquee,
     MarqueeContent,
-    MarqueeFade,
     MarqueeItem,
 } from '@/components/ui/shadcn-io/marquee';
 
@@ -38,13 +37,34 @@ const cards = [
 const FeatureCard = ({ card }: { card: typeof cards[0] }) => (
     <Card className="!w-80 bg-gradient-to-b rounded-2xl text-center text-white flex-shrink-0 mx-3">
         <CardContent className="p-6 flex flex-col items-center justify-center space-y-4 pt-1 gap-4">
-            <div className="p-3 "> <img src={card.icon} alt="icon" /> </div>
+            <div className="p-3"> <img src={card.icon} alt="icon" /> </div>
             <div>
                 <h3 className="text-xl font-medium mb-4">{card.title}</h3>
                 <p className="text-sm text-gray-400">{card.desc}</p>
             </div>
         </CardContent>
     </Card>
+);
+
+// Custom subtle fade component
+const SmokeFade = ({ side }: { side: 'left' | 'right' }) => (
+    <div
+        className={`
+            absolute top-0 bottom-0 w-32 z-10 pointer-events-none
+            ${side === 'left' ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l'}
+            from-background via-background/70 to-transparent
+        `}
+        style={{
+            maskImage: side === 'left'
+                ? 'linear-gradient(to right, black, transparent)'
+                : 'linear-gradient(to left, black, transparent)',
+            WebkitMaskImage: side === 'left'
+                ? 'linear-gradient(to right, black, transparent)'
+                : 'linear-gradient(to left, black, transparent)',
+            backdropFilter: 'blur(2px)',
+            WebkitBackdropFilter: 'blur(2px)',
+        }}
+    />
 );
 
 // MarqueeCards Component using shadcn marquee
@@ -69,8 +89,9 @@ const FeatureMarquee = ({
     return (
         <div className={`relative w-full ${className}`}>
             <Marquee {...marqueeProps}>
-                <MarqueeFade side="left" />
-                <MarqueeFade side="right" />
+                {/* Replace default MarqueeFade with our custom SmokeFade */}
+                <SmokeFade side="left" />
+                <SmokeFade side="right" />
                 <MarqueeContent>
                     {items.map((card, index) => (
                         <MarqueeItem key={index} className="flex-shrink-0">
