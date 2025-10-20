@@ -20,9 +20,8 @@ export default function Home() {
             <AiStrategies />
             <HowItWorksSection />
             <PricingPage />
-            <SocialFeeds/>
+            <SocialFeeds />
             <PreFooter />
-            {/* <New /> */}
         </div>
     )
 }
