@@ -9,7 +9,7 @@ import {
 import { Heart, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import logosm from "../../../assets/home/logosm.svg";
+import Logo from "../../../assets/home/logosm.svg";
 import Thread from "../../../assets/home/thread.svg";
 import Img1 from "../../../assets/home/group11.png";
 import Img2 from "../../../assets/home/group12.png";
@@ -176,7 +176,7 @@ export default function SocialFeedsSection() {
                         <div className="flex items-center gap-3 w-full">
                           <div className="w-16 h-12 rounded-full bg-[#06040C] flex items-center justify-center overflow-hidden">
                             <img
-                              src={logosm}
+                              src={Logo}
                               alt="logo"
                               className="w-8 h-8 object-contain"
                             />
