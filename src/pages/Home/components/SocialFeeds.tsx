@@ -21,7 +21,6 @@ const originalFeedItems = [
     id: 1,
     company: "Tech Tren",
     time: "2d ago",
-    // short text for card, longer content shown in modal for testing
     text: "📈 Understanding market volatility is key to making informed decisions in trading.",
     image: Img1,
     // dummy long content for modal testing (id === 1)
