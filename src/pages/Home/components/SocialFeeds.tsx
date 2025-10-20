@@ -9,7 +9,8 @@ import {
 import { Heart, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import Logo from "../../../assets/home/logosm.svg";
+// import Logo from "../../../assets/home/logosm.svg";
+import Logo from "../../../assets/Home/logosm.svg";
 import Thread from "../../../assets/home/thread.svg";
 import Img1 from "../../../assets/home/group11.png";
 import Img2 from "../../../assets/home/group12.png";
