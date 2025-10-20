@@ -9,12 +9,18 @@ import {
 import { Heart, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import Logo from "../../../assets/Home/logosm.svg";
+// import Logo from "../../../assets/Home/logosm.svg";
+// import Thread from "../../../assets/Home/thread.svg";
+// import Img1 from "../../../assets/home/group11.png";
+// import Img2 from "../../../assets/home/group12.png";
+// import Img3 from "../../../assets/home/group13.png";
+// import Img4 from "../../../assets/home/group14.png";
 import Thread from "../../../assets/Home/thread.svg";
-import Img1 from "../../../assets/home/group11.png";
-import Img2 from "../../../assets/home/group12.png";
-import Img3 from "../../../assets/home/group13.png";
-import Img4 from "../../../assets/home/group14.png";
+import Img1 from "../../../assets/Home/group11.png";
+import Img2 from "../../../assets/Home/group12.png";
+import Img3 from "../../../assets/Home/group13.png";
+import Logo from "../../../assets/Home/logosm.svg";
+import Img4 from "../../../assets/Home/group14.png";
 
 const originalFeedItems = [
   {
