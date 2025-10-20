@@ -267,37 +267,41 @@ export default function SocialFeedsSection() {
             <div className="px-6 py-6 max-h-[60vh] overflow-auto">
               {/* Show the longText if exists for the selected item, else show placeholder */}
               <div className="prose prose-invert text-gray-200">
-                {originalFeedItems.find((f) => f.id === openId)?.longText ? (
-                  <>
-                    {/* Render longText with basic formatting (split by double-newline) */}
-                    {originalFeedItems
-                      .find((f) => f.id === openId)!
-                      .longText.split("\n\n")
-                      .map((para, idx) => (
-                        <p key={idx} className="mb-4">
-                          {para}
+                {(() => {
+                  const selectedItem = originalFeedItems.find((f) => f.id === openId);
+                  if (selectedItem?.longText) {
+                    return (
+                      <>
+                        {/* Render longText with basic formatting (split by double-newline) */}
+                        {selectedItem.longText.split("\n\n").map((para, idx) => (
+                          <p key={idx} className="mb-4">
+                            {para}
+                          </p>
+                        ))}
+                      </>
+                    );
+                  } else {
+                    return (
+                      <>
+                        <h3 className="text-lg font-semibold mb-2">Full post</h3>
+                        <p className="mb-4 text-gray-300">
+                          This is a placeholder for the full content. Replace with
+                          server content or rich HTML when available.
                         </p>
-                      ))}
-                  </>
-                ) : (
-                  <>
-                    <h3 className="text-lg font-semibold mb-2">Full post</h3>
-                    <p className="mb-4 text-gray-300">
-                      This is a placeholder for the full content. Replace with
-                      server content or rich HTML when available.
-                    </p>
-                    <p className="mb-4">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Integer nec odio. Praesent libero. Sed cursus ante
-                      dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
-                      imperdiet. Duis sagittis ipsum.
-                    </p>
-                    <p className="mb-4">
-                      Curabitur tortor. Pellentesque nibh. Aenean quam. In
-                      scelerisque sem at dolor. Maecenas mattis.
-                    </p>
-                  </>
-                )}
+                        <p className="mb-4">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                          Integer nec odio. Praesent libero. Sed cursus ante
+                          dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
+                          imperdiet. Duis sagittis ipsum.
+                        </p>
+                        <p className="mb-4">
+                          Curabitur tortor. Pellentesque nibh. Aenean quam. In
+                          scelerisque sem at dolor. Maecenas mattis.
+                        </p>
+                      </>
+                    );
+                  }
+                })()}
               </div>
             </div>
 
