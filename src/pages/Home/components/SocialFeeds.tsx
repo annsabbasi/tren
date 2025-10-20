@@ -54,21 +54,21 @@ const originalFeedItems = [
     company: "Tech Tren",
     time: "3d ago",
     text: "🔍 The rise of decentralized finance continues to reshape the financial landscape.",
-    image: group12,
+    image: Img1,
   },
   {
     id: 6,
     company: "Tech Tren",
     time: "4d ago",
     text: "📊 Long-term vs short-term investing: which strategy suits your goals?",
-    image: group13,
+    image: Img2,
   },
   {
     id: 7,
     company: "Tech Tren",
     time: "6d ago",
     text: "🔮 Analysts predict significant shifts in the market over the next quarter.",
-    image: group14,
+    image: Img4,
   },
 ];
 
