@@ -11,10 +11,10 @@ import { cn } from "@/lib/utils";
 
 import logosm from "../../../assets/home/logosm.svg";
 import Thread from "../../../assets/home/thread.svg";
-import group11 from "../../../assets/home/group11.png";
-import group12 from "../../../assets/home/group12.png";
-import group13 from "../../../assets/home/group13.png";
-import group14 from "../../../assets/home/group14.png";
+import Img1 from "../../../assets/home/group11.png";
+import Img2 from "../../../assets/home/group12.png";
+import Img3 from "../../../assets/home/group13.png";
+import Img4 from "../../../assets/home/group14.png";
 
 const originalFeedItems = [
   {
@@ -23,7 +23,7 @@ const originalFeedItems = [
     time: "2d ago",
     // short text for card, longer content shown in modal for testing
     text: "📈 Understanding market volatility is key to making informed decisions in trading.",
-    image: group11,
+    image: Img1,
     // dummy long content for modal testing (id === 1)
     longText:
       "📈 Understanding market volatility is key to making informed decisions in trading. \n\nDummy Long Content for testing: This card demonstrates the 'Read more' modal. Here you can put the entire article, thread replies, images, charts, or any rich HTML. Use this area to render markdown or HTML safely. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
@@ -33,21 +33,21 @@ const originalFeedItems = [
     company: "Tech Tren",
     time: "3d ago",
     text: "🔍 The rise of decentralized finance continues to reshape the financial landscape.",
-    image: group12,
+    image: Img2,
   },
   {
     id: 3,
     company: "Tech Tren",
     time: "4d ago",
     text: "📊 Long-term vs short-term investing: which strategy suits your goals?",
-    image: group13,
+    image: Img3,
   },
   {
     id: 4,
     company: "Tech Tren",
     time: "6d ago",
     text: "🔮 Analysts predict significant shifts in the market over the next quarter.",
-    image: group14,
+    image: Img4,
   },
   {
     id: 5,
