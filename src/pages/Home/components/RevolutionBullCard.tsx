@@ -6,7 +6,7 @@ import singleBox from '../../../assets/Home/singlebox.png';
 import downGraph from '../../../assets/Home/Solid (2).svg';
 import greenBull from '../../../assets/Home/greenbull.png';
 import purpleBull from '../../../assets/Home/purplebull.png';
-import Noise from '../../../assets/Home/noise.svg';
+import bullBg from '../../../assets/Home/bullBg.png'
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
@@ -121,6 +121,9 @@ export default function RevolutionBullCard() {
                         </p>
                     </CardContent>
                     <div className="green-circled absolute -top-40 -right-60"></div>
+                    <span>
+                        <img src={bullBg} alt="" className="absolute top-0 left-0 w-full h-full object-cover" />
+                    </span>
                 </Card>
 
                 {/* Marquee Section - Using shadcn marquee */}
@@ -145,17 +148,17 @@ export default function RevolutionBullCard() {
                             alt="bull"
                             className="w-[400px] h-[230px] object-contain absolute top-3 -left-84 -mr-40 -z-3 opacity-50"
                         />
-                        <div className="glass-custom absolute -top-12 left-5 py-4 pt-6 px-6 w-66">
+                        <div className="glass-custom absolute -top-12 left-5 py-4 pt-6 px-6 w-66 z-[3]">
                             <span>🔥</span>
                             <h5 className="text-gray-200 mt-1 text-sm">Thousands Gather for Election Day Protest in Georgia</h5>
                             <p className="text-xs text-gray-400 mt-2">1d - Yahoo Finance</p>
                         </div>
-                        <div className="glass-custom absolute -top-10 -right-36 py-4 pt-6 px-6 w-72 z-10">
+                        <div className="glass-custom absolute -top-10 -right-36 py-4 pt-6 px-6 w-72  z-[8]">
                             <span>🔥</span>
                             <h5 className="text-gray-200 mt-1 text-sm">The Fed Lowers Interest Rates: Implications for Tesla Stock</h5>
                             <p className="text-xs text-gray-400 mt-2">1d ago - NASDAQ.com</p>
                         </div>
-                        <div className="glass-custom absolute top-6 -right-16 py-4 pt-6 px-6 w-72">
+                        <div className="glass-custom absolute top-6 -right-16 py-4 pt-6 px-6 w-72  z-[3]">
                             <span>🔥</span>
                             <h5 className="text-gray-200 mt-1 text-sm">Rachel Cruze: 8 Strategies to Reduce Your Essential Expenses</h5>
                             <p className="text-xs text-gray-400 mt-2">1d ago - AMAZON</p>
@@ -179,14 +182,16 @@ export default function RevolutionBullCard() {
                     </p>
                 </CardContent>
                 <div className="purple-circled absolute -top-36 -left-88"></div>
+
+                <img src={bullBg} alt="" className="absolute top-0 left-0 w-full h-full object-cover z-[1]" />
+
             </Card>
 
 
             {/* Side Filters Code */}
-            <div className="">
+            <div className="!overflow-hidden myBullBg">
                 <img src={singleBox} alt="box" className="absolute -left-[450px] -top-10 object-contain w-1/2" />
                 <div className="green-shadow -top-10 -left-[450px]"></div>
-                <img src={Noise} alt="" className="absolute top-0 right-80 w-[60%] h-[58%] object-cover" />
             </div>
 
             <div className="">
