@@ -11,7 +11,7 @@ import arrowUp from '../../../assets/Home/arrow-up.svg';
 
 export default function RevolutionPage() {
     return (
-        <div className="relative pt-40 sm:pt-24 pb-5 mx-auto px-4 sm:px-6 max-w-6xl">
+        <div className="relative pt-40 sm:pt-24 pb-5 mx-auto px-5 sm:px-6 max-w-6xl">
             <h1 className="mx-auto max-w-3xl text-center text-balance text-4xl md:text-5xl font-light sm:pb-16 pb-8">Revolutionizing the Investment worldwide</h1>
 
             <div className="">

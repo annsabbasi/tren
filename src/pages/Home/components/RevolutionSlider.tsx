@@ -4,6 +4,14 @@ import {
     MarqueeContent,
     MarqueeItem,
 } from '@/components/ui/shadcn-io/marquee';
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    type CarouselApi,
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+import * as React from "react";
 
 import Icon1 from '../../../assets/Home/revolution-carousel-icon1.svg';
 import Icon2 from '../../../assets/Home/revolution-carousel-icon2.svg';
@@ -34,8 +42,8 @@ const cards = [
 ];
 
 // Card Component for Marquee Items
-const FeatureCard = ({ card }: { card: typeof cards[0] }) => (
-    <Card className="!w-80 bg-gradient-to-b rounded-2xl text-center text-white flex-shrink-0 mx-3">
+const FeatureCard = ({ card, className = "" }: { card: typeof cards[0]; className?: string }) => (
+    <Card className={cn("!w-80 bg-gradient-to-b rounded-2xl text-center text-white flex-shrink-0 mx-3", className)}>
         <CardContent className="p-6 flex flex-col items-center justify-center space-y-4 pt-1 gap-4">
             <div className="p-3"> <img src={card.icon} alt="icon" /> </div>
             <div>
@@ -104,14 +112,153 @@ const FeatureMarquee = ({
     );
 };
 
+// Mobile Carousel Component
+interface FeatureCarouselProps {
+    items: typeof cards;
+    className?: string;
+}
+
+// Mobile Carousel Component
+interface FeatureCarouselProps {
+    items: typeof cards;
+    className?: string;
+}
+
+const FeatureCarousel = ({
+    items,
+    className,
+}: FeatureCarouselProps) => {
+    const [api, setApi] = React.useState<CarouselApi>();
+    const [current, setCurrent] = React.useState(0);
+
+    React.useEffect(() => {
+        if (!api) return;
+
+        const update = () => {
+            setCurrent(api.selectedScrollSnap());
+        };
+
+        update();
+        api.on("select", update);
+
+        // Auto-play with 3 second interval
+        const autoplay = setInterval(() => {
+            api.scrollNext();
+        }, 4000);
+
+        return () => clearInterval(autoplay);
+    }, [api]);
+
+    // Function to calculate dot style based on position relative to active dot
+    const getDotStyle = (index: number) => {
+        const distanceFromActive = Math.abs(index - current);
+
+        // Active dot: largest size, full opacity
+        if (distanceFromActive === 0) {
+            return {
+                width: "1rem", // 16px - largest
+                height: "0.5rem", // 8px
+                opacity: 1
+            };
+        }
+        // Immediate neighbors (1 away): medium size, high opacity
+        if (distanceFromActive === 1 || distanceFromActive === (items.length - 1)) {
+            return {
+                width: "0.6rem", // 12px - medium
+                height: "0.6rem", // 6px
+                opacity: 0.8
+            };
+        }
+        // Next neighbors (2 away): small size, medium opacity
+        if (distanceFromActive === 2 || distanceFromActive === (items.length - 2)) {
+            return {
+                width: "0.4rem", // 8px - small
+                height: "0.4rem", // 4px
+                opacity: 0.5
+            };
+        }
+        // Farthest dots: smallest size, low opacity
+        return {
+            width: "0.4rem", // 6px - smallest
+            height: "0.4rem", // 3px
+            opacity: 0.3
+        };
+    };
+
+    return (
+        <div className={`relative w-full ${className}`}>
+            <Carousel
+                setApi={setApi}
+                className="w-full"
+                opts={{
+                    align: "center",
+                    loop: true,
+                }}
+            >
+                {/* Remove negative margins and adjust padding */}
+                <CarouselContent className="-ml-10 mr-0 ">
+                    {items.map((card, index) => (
+                        <CarouselItem
+                            key={index}
+                            // Use basis-3/4 (75%) instead of 4/5 (80%) to show more of adjacent slides
+                            className="pl-2 pr-2 basis-3/4 sm:basis-2/5"
+                        >
+                            <div className={cn(
+                                "transition-all duration-300 transform",
+                                current === index
+                                    ? "scale-100 opacity-100"
+                                    : "scale-90 opacity-70"
+                            )}>
+                                <FeatureCard card={card} />
+                            </div>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+            </Carousel>
+
+            {/* Pagination Dots - Same style as OurInvestorCard */}
+            <div className="mt-8 flex justify-center">
+                <div className="flex items-center gap-3 px-6 py-3 bg-black/80 border border-gray-700/40 rounded-full">
+                    {items.map((_, i) => {
+                        const dotStyle = getDotStyle(i);
+                        return (
+                            <button
+                                key={i}
+                                onClick={() => api?.scrollTo(i)}
+                                className={cn(
+                                    "transition-all duration-300 rounded-full bg-gray-600 hover:bg-gray-400",
+                                    current === i && "bg-white"
+                                )}
+                                style={{
+                                    width: dotStyle.width,
+                                    height: dotStyle.height,
+                                    opacity: dotStyle.opacity
+                                }}
+                            />
+                        );
+                    })}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 export default function RevolutionSlider() {
     return (
-        <div className="relative overflow-hidden w-full bg-transparent pb-10 px-16 max-w-6xl mx-auto">
-            <FeatureMarquee
-                items={cards}
-                direction="left"
-                pauseOnHover={true}
-            />
+        <div className="relative overflow-visible w-full bg-transparent pb-10 px-4 sm:px-8 lg:px-16 max-w-6xl mx-auto">
+            {/* Desktop - Marquee */}
+            <div className="hidden lg:block">
+                <FeatureMarquee
+                    items={cards}
+                    direction="left"
+                    pauseOnHover={true}
+                />
+            </div>
+
+            {/* Mobile - Carousel with Partial Slides Visible */}
+            <div className="block lg:hidden overflow-visible">
+                <FeatureCarousel items={cards} />
+            </div>
         </div>
     );
 }

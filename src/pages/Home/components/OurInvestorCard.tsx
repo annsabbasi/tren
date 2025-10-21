@@ -124,7 +124,7 @@ export default function OurInvestorCard() {
     // Auto-play with 2 second interval
     const autoplay = setInterval(() => {
       api.scrollNext();
-    }, 2000);
+    }, 4000);
 
     return () => clearInterval(autoplay);
   }, [api]);
@@ -145,8 +145,6 @@ export default function OurInvestorCard() {
     // Immediate neighbors (1 away): medium size, high opacity
     if (distanceFromActive === 1 || distanceFromActive === 6) { // 6 accounts for circular nature
       return {
-        // width: "0.75rem", // 12px - medium
-        // height: "0.375rem", // 6px
         width: "0.6rem", // 12px - medium
         height: "0.6rem", // 6px
         opacity: 0.8
@@ -155,8 +153,6 @@ export default function OurInvestorCard() {
     // Next neighbors (2 away): small size, medium opacity
     if (distanceFromActive === 2 || distanceFromActive === 5) {
       return {
-        // width: "0.5rem", // 8px - small
-        // height: "0.25rem", // 4px
         width: "0.4rem", // 8px - small
         height: "0.4rem", // 4px
         opacity: 0.5
@@ -164,8 +160,6 @@ export default function OurInvestorCard() {
     }
     // Farthest dots (3 away): smallest size, low opacity
     return {
-      // width: "0.375rem", // 6px - smallest
-      // height: "0.1875rem", // 3px
       width: "0.4rem", // 6px - smallest
       height: "0.4rem", // 3px
       opacity: 0.3
@@ -202,40 +196,90 @@ export default function OurInvestorCard() {
             <span className="text-sm">5.0 rating from 1,650 reviews</span>
           </div>
         </div>
+
         {/* Carousel */}
         <div className="relative mb-16">
-          <Carousel
-            setApi={setApi}
-            className="w-full"
-            opts={{ align: "start", loop: true }}
-          >
-            <CarouselContent className="-ml-3 md:-ml-4 px-2">
-              {testimonials.map((t, i) => (
-                <CarouselItem
-                  key={`${t.id}-${i}`}
-                  className="pl-3 md:pl-4 basis-1/2 lg:basis-1/4"
-                >
-                  <Card className="border rounded-2xl h-full hover:border-gray-500 bg-transparent transition cursor-default">
-                    <CardContent className="px-6 py-2 h-full flex flex-col">
-                      <div className="flex items-center gap-4 mb-4">
-                        <img src={Stars} alt="Stars" className="h-4 w-auto" />
-                        <span className="text-lg font-bold">{t.rating}</span>
-                      </div>
+          {/* Desktop Carousel - unchanged */}
+          <div className="hidden lg:block">
+            <Carousel
+              setApi={setApi}
+              className="w-full"
+              opts={{ align: "start", loop: true }}
+            >
+              <CarouselContent className="-ml-3 md:-ml-4 px-2">
+                {testimonials.map((t, i) => (
+                  <CarouselItem
+                    key={`${t.id}-${i}`}
+                    className="pl-3 md:pl-4 basis-1/2 lg:basis-1/4"
+                  >
+                    <Card className="border rounded-2xl h-full hover:border-gray-500 bg-transparent transition cursor-default">
+                      <CardContent className="px-6 py-2 h-full flex flex-col">
+                        <div className="flex items-center gap-4 mb-4">
+                          <img src={Stars} alt="Stars" className="h-4 w-auto" />
+                          <span className="text-lg font-bold">{t.rating}</span>
+                        </div>
 
-                      <p className="text-gray-400 text-sm leading-relaxed flex-grow mt-2 mb-5">
-                        "{t.text}"
-                      </p>
+                        <p className="text-gray-400 text-sm leading-relaxed flex-grow mt-2 mb-5">
+                          "{t.text}"
+                        </p>
 
-                      <div className="mt-auto">
-                        <p className="text-base font-medium">{t.name}</p>
-                        <p className="text-xs mt-1 text-gray-400">{t.time}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                        <div className="mt-auto">
+                          <p className="text-base font-medium">{t.name}</p>
+                          <p className="text-xs mt-1 text-gray-400">{t.time}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+
+          {/* Mobile Carousel - with responsive behavior similar to RevolutionSlider */}
+          <div className="block lg:hidden overflow-visible">
+            <Carousel
+              setApi={setApi}
+              className="w-full"
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+            >
+              <CarouselContent className="ml-1 mr-0">
+                {testimonials.map((t, i) => (
+                  <CarouselItem
+                    key={`${t.id}-${i}`}
+                    className="pl-2 pr-2 basis-3/4"
+                  >
+                    <div className={cn(
+                      "transition-all duration-300 transform",
+                      current === (i % originalTestimonials.length)
+                        ? "scale-100 opacity-100"
+                        : "scale-90 opacity-70"
+                    )}>
+                      <Card className="border rounded-2xl h-full hover:border-gray-500 bg-transparent transition cursor-default">
+                        <CardContent className="px-6 py-2 h-full flex flex-col">
+                          <div className="flex items-center gap-4 mb-4">
+                            <img src={Stars} alt="Stars" className="h-4 w-auto" />
+                            <span className="text-lg font-bold">{t.rating}</span>
+                          </div>
+
+                          <p className="text-gray-400 text-sm leading-relaxed flex-grow mt-2 mb-5">
+                            "{t.text}"
+                          </p>
+
+                          <div className="mt-auto">
+                            <p className="text-base font-medium">{t.name}</p>
+                            <p className="text-xs mt-1 text-gray-400">{t.time}</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
 
           {/* Pagination Dots - Now showing exactly 7 dots */}
           <div className="mt-10 flex justify-center">
