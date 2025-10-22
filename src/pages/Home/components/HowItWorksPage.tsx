@@ -17,8 +17,18 @@ import {
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
+// Define the step type
+interface Step {
+    number: string;
+    title: string;
+    image: string | null;
+    description: string;
+    vectorInput: string | null;
+    signals: boolean;
+}
+
 // Step data for carousel
-const steps = [
+const steps: Step[] = [
     {
         number: "1",
         title: "Search or Ask",
@@ -46,8 +56,7 @@ const steps = [
 ];
 
 // Step Card Component
-const StepCard = ({ step, className = "" }: { step: typeof steps[0]; className?: string }) => (
-    // <div className={cn("group", className)}>
+const StepCard = ({ step, className = "" }: { step: Step; className?: string }) => (
     <div className={cn("group", className)}>
         <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B] glass-dark2 h-full">
             {/* Step number badge with gradient on hover */}
@@ -94,7 +103,7 @@ const StepCard = ({ step, className = "" }: { step: typeof steps[0]; className?:
 );
 
 // Mobile Carousel Component - Single slide only
-const StepsCarousel = ({ steps }: { steps: typeof steps }) => {
+const StepsCarousel = ({ steps }: { steps: Step[] }) => {
     const [api, setApi] = React.useState<CarouselApi>();
     const [current, setCurrent] = React.useState(0);
 
@@ -163,7 +172,7 @@ const StepsCarousel = ({ steps }: { steps: typeof steps }) => {
                 }}
             >
                 <CarouselContent>
-                    {steps.map((step: any, index: any) => (
+                    {steps.map((step, index) => (
                         <CarouselItem
                             key={index}
                             className="basis-full bg-transparent" // Full width - single slide only
@@ -177,7 +186,7 @@ const StepsCarousel = ({ steps }: { steps: typeof steps }) => {
             {/* Pagination Dots - Same style as reference */}
             <div className="mt-4 flex justify-center">
                 <div className="flex items-center gap-3 px-6 py-3 bg-black/80 border border-gray-700/40 rounded-full">
-                    {steps.map((_: any, i: any) => {
+                    {steps.map((_, i) => {
                         const dotStyle = getDotStyle(i);
                         const isActive = current === i;
 
@@ -202,7 +211,6 @@ const StepsCarousel = ({ steps }: { steps: typeof steps }) => {
                 </div>
             </div>
             <div className="">
-                {/* <img src={singleBox} alt="box" className="absolute  sm:-right-[450px] -top-40 object-contain sm:w-1/2  right-0 w-full sm:hidden block" /> */}
                 <div className="purple-shadow sm:w-1/2 sm:h-96 -bottom-16 sm:-right-[400px] right-0 w-full h-1/4 sm:hidden block" style={{ filter: 'blur(100px) saturate(65%)' }}></div>
             </div>
         </div>
