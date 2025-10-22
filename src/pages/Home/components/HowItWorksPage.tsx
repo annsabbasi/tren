@@ -8,10 +8,210 @@ import Signals from '../../../assets/Home/signals.gif';
 import TechCardImg3 from '../../../assets/Home/techCardImg3.svg';
 import VectorInput from '../../../assets/Home/vectorInput.svg';
 import singleBox from '../../../assets/Home/singlebox.png';
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    type CarouselApi,
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+import * as React from "react";
+
+// Step data for carousel
+const steps = [
+    {
+        number: "1",
+        title: "Search or Ask",
+        image: TechCardImg1,
+        description: "Enter your stock, crypto, or question.",
+        vectorInput: null,
+        signals: false
+    },
+    {
+        number: "2",
+        title: "AI Analysis",
+        image: null,
+        description: "Our AI analyzes market data and trends.",
+        vectorInput: VectorInput,
+        signals: true
+    },
+    {
+        number: "3",
+        title: "Get Insights",
+        image: TechCardImg3,
+        description: "Receive actionable investment insights.",
+        vectorInput: null,
+        signals: false
+    }
+];
+
+// Step Card Component
+const StepCard = ({ step, className = "" }: { step: typeof steps[0]; className?: string }) => (
+    // <div className={cn("group", className)}>
+    <div className={cn("group", className)}>
+        <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B] glass-dark2 h-full">
+            {/* Step number badge with gradient on hover */}
+            <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
+                <span className="text-lg font-medium group-hover:text-white">{step.number}</span>
+            </div>
+
+            <CardContent className="sm:pt-6 space-y-6 flex flex-col flex-grow pt-3">
+                <h3 className="text-xl font-medium">{step.title}</h3>
+                <div className="w-full space-y-2 flex-grow">
+                    {step.image && (
+                        <span className="block">
+                            <img src={step.image} alt={step.title} className="border rounded-2xl h-64 w-full object-cover transition-all duration-300" />
+                        </span>
+                    )}
+                    {step.vectorInput && (
+                        <div className="relative border rounded-2xl flex items-end justify-end h-64 px-6 transition-all duration-300">
+                            <img src={step.vectorInput} alt="VectorInput" className="self-end" />
+                            {step.signals && (
+                                <div className="absolute w-36 h-auto left-1/2 -translate-x-1/2 top-2">
+                                    <img
+                                        src={Signals}
+                                        alt="Signals"
+                                        className="w-full h-full object-contain"
+                                    />
+                                    {/* Gradient overlay with mix blend mode */}
+                                    <div
+                                        className="absolute inset-0 mix-blend-color"
+                                        style={{
+                                            background: 'linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%)',
+                                        }}
+                                    ></div>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+                <p className="text-sm text-muted-foreground px-4 sm:mb-10 sm:mt-8 text-gray-400 flex-shrink-0 mb-4">
+                    {step.description}
+                </p>
+            </CardContent>
+        </Card>
+    </div>
+);
+
+// Mobile Carousel Component - Single slide only
+const StepsCarousel = ({ steps }: { steps: typeof steps }) => {
+    const [api, setApi] = React.useState<CarouselApi>();
+    const [current, setCurrent] = React.useState(0);
+
+    React.useEffect(() => {
+        if (!api) return;
+
+        const update = () => {
+            setCurrent(api.selectedScrollSnap());
+        };
+
+        update();
+        api.on("select", update);
+
+        // Auto-play with 4 second interval
+        const autoplay = setInterval(() => {
+            api.scrollNext();
+        }, 30000);
+
+        return () => clearInterval(autoplay);
+    }, [api]);
+
+    // Function to calculate dot style based on position relative to active dot
+    const getDotStyle = (index: number) => {
+        const distanceFromActive = Math.abs(index - current);
+
+        // Active dot: largest size, full opacity
+        if (distanceFromActive === 0) {
+            return {
+                width: "1rem", // 16px - largest
+                height: "0.5rem", // 8px
+                opacity: 1
+            };
+        }
+        // Immediate neighbors (1 away): medium size, high opacity
+        if (distanceFromActive === 1 || distanceFromActive === (steps.length - 1)) {
+            return {
+                width: "0.6rem", // 12px - medium
+                height: "0.6rem", // 6px
+                opacity: 0.8
+            };
+        }
+        // Next neighbors (2 away): small size, medium opacity
+        if (distanceFromActive === 2 || distanceFromActive === (steps.length - 2)) {
+            return {
+                width: "0.4rem", // 8px - small
+                height: "0.4rem", // 4px
+                opacity: 0.5
+            };
+        }
+        // Farthest dots: smallest size, low opacity
+        return {
+            width: "0.4rem", // 6px - smallest
+            height: "0.4rem", // 3px
+            opacity: 0.3
+        };
+    };
+
+    return (
+        <div className="relative w-full">
+            <Carousel
+                setApi={setApi}
+                className="w-full"
+                opts={{
+                    align: "center",
+                    loop: true,
+                }}
+            >
+                <CarouselContent>
+                    {steps.map((step: any, index: any) => (
+                        <CarouselItem
+                            key={index}
+                            className="basis-full bg-transparent" // Full width - single slide only
+                        >
+                            <StepCard step={step} className="pt-5 h-full" />
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+            </Carousel>
+
+            {/* Pagination Dots - Same style as reference */}
+            <div className="mt-4 flex justify-center">
+                <div className="flex items-center gap-3 px-6 py-3 bg-black/80 border border-gray-700/40 rounded-full">
+                    {steps.map((_: any, i: any) => {
+                        const dotStyle = getDotStyle(i);
+                        const isActive = current === i;
+
+                        return (
+                            <button
+                                key={i}
+                                onClick={() => api?.scrollTo(i)}
+                                className={cn(
+                                    "transition-all duration-300 rounded-full",
+                                    isActive
+                                        ? "bg-gradient-to-r from-[#28AD9B] to-[#4E3AAC] border-transparent"
+                                        : "bg-gray-600 hover:bg-gray-400"
+                                )}
+                                style={{
+                                    width: dotStyle.width,
+                                    height: dotStyle.height,
+                                    opacity: dotStyle.opacity
+                                }}
+                            />
+                        );
+                    })}
+                </div>
+            </div>
+            <div className="">
+                {/* <img src={singleBox} alt="box" className="absolute  sm:-right-[450px] -top-40 object-contain sm:w-1/2  right-0 w-full sm:hidden block" /> */}
+                <div className="purple-shadow sm:w-1/2 sm:h-96 -bottom-16 sm:-right-[400px] right-0 w-full h-1/4 sm:hidden block" style={{ filter: 'blur(100px) saturate(65%)' }}></div>
+            </div>
+        </div>
+    );
+};
 
 export default function HowItWorksSection() {
     return (
-        <section className="relative w-full flex flex-col items-center justify-center pb-20 pt-8 px-4 text-center max-w-6xl mx-auto">
+        <section className="relative w-full flex flex-col items-center justify-center sm:pb-20 sm:pt-8 sm:px-4 text-center max-w-6xl mx-auto pt-0 px-2 pb-10">
             {/* Top: small text link */}
             <div className="text-sm mb-5 flex items-center justify-center gap-2">
                 <img src={PuzzlePiece} alt="PuzzlePiece" className="w-4 h-4" />
@@ -21,110 +221,32 @@ export default function HowItWorksSection() {
             </div>
 
             {/* Main title */}
-            <h1 className="text-4xl md:text-5xl font-medium mb-2">
+            <h1 className="sm:text-5xl font-medium mb-2 text-4xl">
                 Tech Tren – your personal
-            </h1>
-            <h2 className="text-4xl md:text-5xl font-medium mb-6">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
-                    AI consultant for Investment
+                    {' '}AI consultant for Investment
                 </span>
-            </h2>
+            </h1>
 
             {/* Subtitle */}
-            <p className="text-sm md:text-base text-muted-foreground mb-16 text-gray-400">
+            <p className="text-sm sm:text-base text-muted-foreground sm:mb-16 text-gray-400 mb-10">
                 Find out if you're the investor – in 3 minutes
             </p>
 
-            {/* 3 Step Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mt-8">
-
-                {/* Step 1 */}
-                <div className="group">
-                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B] glass-dark2">
-                        {/* Step number badge with gradient on hover */}
-                        <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
-                            <span className="text-lg font-medium group-hover:text-white">1</span>
-                        </div>
-
-                        <CardContent className="pt-6 space-y-6">
-                            <h3 className="text-xl font-medium">Search or Ask</h3>
-                            <div className="w-full space-y-2">
-                                <span className="">
-                                    <img src={TechCardImg1} alt="TechCardImg1" className="border rounded-2xl h-64 transition-all duration-300" />
-                                </span>
-                            </div>
-                            <p className="text-sm text-muted-foreground px-10 mb-10 mt-8 text-gray-400">
-                                Enter your stock, crypto, or question.
-                            </p>
-                        </CardContent>
-                    </Card>
-                </div>
-
-                {/* Step 2 */}
-                <div className="group">
-                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B] glass-dark2">
-                        {/* Step number badge with gradient on hover */}
-                        <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
-                            <span className="text-lg font-medium group-hover:text-white">2</span>
-                        </div>
-
-                        <CardContent className="pt-6 space-y-6">
-                            <h3 className="text-xl font-medium">AI Analysis</h3>
-                            <div className="w-full space-y-2">
-                                <div className="relative border rounded-2xl flex items-end justify-end h-64 px-6 transition-all duration-300">
-                                    <img src={VectorInput} alt="VectorInput" className="self-end" />
-
-                                    {/* Updated Signals GIF with blend mode */}
-                                    <div className="absolute w-36 h-auto left-1/2 -translate-x-1/2 top-2">
-                                        <img
-                                            src={Signals}
-                                            alt="Signals"
-                                            className="w-full h-full object-contain"
-                                        />
-                                        {/* Gradient overlay with mix blend mode */}
-                                        <div
-                                            className="absolute inset-0 mix-blend-color"
-                                            style={{
-                                                background: 'linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%)',
-                                            }}
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p className="text-sm text-muted-foreground px-10 mb-10 mt-8 text-gray-400">
-                                Our AI analyzes market data and trends.
-                            </p>
-                        </CardContent>
-                    </Card>
-                </div>
-
-                {/* Step 3 */}
-                <div className="group">
-                    <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B] glass-dark2">
-
-                        {/* Step number badge with gradient on hover */}
-                        <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
-                            <span className="text-lg font-medium group-hover:text-white">3</span>
-                        </div>
-
-                        <CardContent className="pt-6 space-y-6">
-                            <h3 className="text-xl font-medium">Get Insights</h3>
-                            <div className="w-full space-y-2">
-                                <span className="">
-                                    <img src={TechCardImg3} alt="TechCardImg3" className="border rounded-2xl h-64 transition-all duration-300" />
-                                </span>
-                            </div>
-                            <p className="text-sm text-muted-foreground px-10 mb-10 mt-8 text-gray-400">
-                                Receive actionable investment insights.
-                            </p>
-                        </CardContent>
-                    </Card>
-                </div>
-
+            {/* Desktop: Grid Layout */}
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl sm:mt-8 mt-0 sm:px-0 px-6">
+                {steps.map((step, index) => (
+                    <StepCard key={index} step={step} className="group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300 cursor-default" />
+                ))}
             </div>
 
-            <div className="mt-12 flex items-center justify-center gap-3 mb-12">
-                <Button className="special-btn hover:scale-110 gradient-box-shadow">
+            {/* Mobile: Carousel Layout - Single slide only */}
+            <div className="block md:hidden w-full max-w-6xl sm:mt-8 mt-0 sm:px-0 px-6">
+                <StepsCarousel steps={steps} />
+            </div>
+
+            <div className="mt-8 flex items-center justify-center sm:flex-row flex-col gap-5 sm:gap-3 w-full">
+                <Button className="special-btn hover:scale-110 gradient-box-shadow w-2/3 sm:w-fit sm:py-5 sm:px-5 py-6 text-base">
                     Start free trial
                     <span className="ml-1">
                         <ChevronRight size={14} />

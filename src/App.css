@@ -63,7 +63,7 @@ h5 {
   border-radius: 16px;
   backdrop-filter: blur(10px) saturate(160%);
   -webkit-backdrop-filter: blur(10px) saturate(160%);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+  /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6); */
 }
 
 
@@ -189,7 +189,7 @@ h5 {
   border-radius: 16px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.06);
-  color: white;
+  /* color: white; */
   box-sizing: border-box;
 }
 
@@ -212,6 +212,13 @@ h5 {
   backdrop-filter: blur(8px) saturate(240%);
   pointer-events: none;
   z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .ai-strategies-main::before {
+    inset: -11px;
+    padding: 11px;
+  }
 }
 
 /* RevolutionSlider */

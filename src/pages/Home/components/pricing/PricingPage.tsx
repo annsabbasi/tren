@@ -55,11 +55,6 @@ const PricingCard = ({ tier, billingPeriod, isSticky = false }: { tier: PricingT
             <CardContent className="p-0 relative z-1">
                 {/* Top section with gradient background */}
                 <div className="relative">
-                    {/* <div className={`
-            absolute top-52 left-0 right-0 !h-40
-            bg-gradient-to-b ${getCardGradient(tier.id)} opacity-20
-            pointer-events-none
-          `} /> */}
                     <div className="pt-2 pb-6 px-8 relative z-1">
                         <h4 className="text-gray-400 text-md font-medium mb-2">{tier.name}</h4>
 
@@ -121,13 +116,13 @@ const PricingCard = ({ tier, billingPeriod, isSticky = false }: { tier: PricingT
 const FreeTrialCard = () => (
     <Card className="bg-transparent py-0 rounded-4xl mb-8">
         <CardContent className="p-6 md:p-12">
-            <div className="flex flex-col lg:flex-row justify-between items-center ">
-                <div className="text-center lg:text-left">
+            <div className="flex flex-col lg:flex-row justify-between sm:items-center items-start">
+                <div className="text-left">
                     <h4 className="text-white text-3xl md:text-4xl font-medium mb-2">Free</h4>
                     <p className="text-gray-400 text-base">Limited time - free trial</p>
                 </div>
 
-                <div className="grid grid-cols-1  md:grid-cols-2 gap-4 flex-1 max-w-md ml-auto">
+                <div className="grid grid-cols-1  md:grid-cols-2 gap-4 flex-1 max-w-md sm:ml-auto sm:my-0 my-8">
                     {['Should I Buy Analysis', 'Price Prediction', 'Technical Analysis', 'Option Strategy'].map((feature) => (
                         <div key={feature} className="flex items-center gap-2.5 w-fit">
                             <BadgeCheck className="w-5 h-5 text-white" />
@@ -159,12 +154,12 @@ const BillingToggle = ({ billingPeriod, setBillingPeriod }: {
         onValueChange={(value) => setBillingPeriod(value as 'monthly' | 'yearly')}
         className="w-full max-w-sm"
     >
-        <TabsList className="gradient-box-shadow rounded-full w-full !px-1 h-11">
+        <TabsList className="gradient-box-shadow rounded-full w-full !px-1 sm:h-11 h-14">
             <TabsTrigger
                 value="yearly"
                 className="rounded-full py-4 flex items-center justify-between gap-4 !pl-6 cursor-pointer data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#14E893]/25 data-[state=active]:to-[#5131AD]/25
           data-[state=active]:shadow-[inset_0px_0px_0px_1px_#FFFFFF1A]
-        "
+         sm:text-sm text-lg"
             >
                 Annually
                 <span className="special-btn !py-1 !px-4 !text-xs">
@@ -185,10 +180,49 @@ const BillingToggle = ({ billingPeriod, setBillingPeriod }: {
     </Tabs>
 );
 
+// Mobile Tabs Component
+const MobilePlanTabs = ({
+    selectedTier,
+    onTierChange,
+    billingPeriod
+}: {
+    selectedTier: PricingTier;
+    onTierChange: (tier: PricingTier) => void;
+    billingPeriod: 'monthly' | 'yearly';
+}) => {
+    return (
+        <div className="md:hidden mb-6">
+            <Tabs value={selectedTier.id} className="w-full">
+                <TabsList className="grid grid-cols-4 w-full p-1 bg-transparent border border-gray-700 rounded-2xl">
+                    {pricingData.map((tier) => (
+                        <TabsTrigger
+                            key={tier.id}
+                            value={tier.id}
+                            onClick={() => onTierChange(tier)}
+                            className="text-xs font-medium py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#14E893]/25 data-[state=active]:to-[#5131AD]/25 data-[state=active]:text-white text-gray-400 rounded-xl transition-all duration-200 cursor-pointer"
+                        >
+                            {tier.name}
+                        </TabsTrigger>
+                    ))}
+                </TabsList>
+            </Tabs>
+
+            {/* Selected Plan Card for Mobile */}
+            <div className="mt-6">
+                <PricingCard
+                    tier={selectedTier}
+                    billingPeriod={billingPeriod}
+                />
+            </div>
+        </div>
+    );
+};
+
 const PricingSection: React.FC = () => {
     const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('yearly');
     const [openCard, setOpenCard] = useState<string | null>(null);
     const [stickyCards, setStickyCards] = useState<Set<string>>(new Set());
+    const [selectedMobileTier, setSelectedMobileTier] = useState<PricingTier>(pricingData[0]);
     const cardsRef = useRef<Map<string, HTMLDivElement>>(new Map());
 
     // Check if any accordion is open in any card
@@ -246,12 +280,12 @@ const PricingSection: React.FC = () => {
 
     return (
         <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-transparent">
-            <div className="text-center mb-6">
+            <div className="text-center sm:mb-6 mb-10">
                 <div className="flex items-center justify-center gap-2 text-gray-300 mb-4">
-                    <Zap className="w-5 h-5" />
-                    <span className="text-lg font-medium">Membership and pricing plans</span>
+                    <Zap className="sm:w-5 sm:h-5 h-4 w-4" />
+                    <span className="sm:text-lg font-medium text-base">Membership and pricing plans</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-medium text-white">
+                <h2 className="text-4xl md:text-5xl font-medium text-white px-4">
                     Explore the best plan for you
                 </h2>
             </div>
@@ -262,7 +296,15 @@ const PricingSection: React.FC = () => {
 
             <FreeTrialCard />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 relative">
+            {/* Mobile Tabs */}
+            <MobilePlanTabs
+                selectedTier={selectedMobileTier}
+                onTierChange={setSelectedMobileTier}
+                billingPeriod={billingPeriod}
+            />
+
+            {/* Desktop Grid - Hidden on mobile */}
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 relative">
                 {pricingData.map((tier) => (
                     <div
                         key={tier.id}

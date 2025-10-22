@@ -17,11 +17,11 @@ import {
 
 // Partner logos
 import logo11 from "../../../assets/Home/logo11.png";
-import logo12 from "../../../assets/Home/logo11.png";
-import logo13 from "../../../assets/Home/logo11.png";
-import logo14 from "../../../assets/Home/logo11.png";
-import logo15 from "../../../assets/Home/logo11.png";
-import logo16 from "../../../assets/Home/logo11.png";
+import logo12 from "../../../assets/Home/logo12.png";
+import logo13 from "../../../assets/Home/logo13.png";
+import logo14 from "../../../assets/Home/logo14.png";
+import logo15 from "../../../assets/Home/logo15.png";
+import logo16 from "../../../assets/Home/logo16.png";
 
 const originalTestimonials = [
   {
@@ -82,14 +82,14 @@ const partnerLogos = [logo11, logo12, logo13, logo14, logo15, logo16];
 
 const LogoMarquee = () => {
   return (
-    <div className="relative w-full mt-12 max-w-4xl mx-auto">
+    <div className="relative w-full sm:mt-12 mt-8 max-w-4xl mx-auto">
       <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[rgba(6,4,12,0.9)] to-transparent z-10 pointer-events-none"></div>
       <div className="absolute rounded-lg right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[rgba(6,4,12,0.9)] to-transparent z-10 pointer-events-none"></div>
 
       <Marquee >
         <MarqueeContent pauseOnHover>
           {partnerLogos.map((logo, i) => (
-            <MarqueeItem key={i} className="mx-8 flex-shrink-0">
+            <MarqueeItem key={i} className="sm:mx-8 mx-4 flex-shrink-0">
               <div className="h-14 w-32 flex items-center justify-center">
                 <img
                   src={logo}
@@ -172,9 +172,9 @@ export default function OurInvestorCard() {
       <div className="absolute top-0 left-0 w-full h-[450px] bg-[linear-gradient(180deg,rgba(20,232,147,0.1)_0%,rgba(6,4,12,0.1)_100%)] pointer-events-none -z-[1]"></div>
 
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto sm:px-6 px-0">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-14 sm:px-0 px-4">
           <p className="flex items-center justify-center gap-2 text-xs uppercase tracking-wide text-gray-400 mb-3">
             <Star className="w-3 h-3" />
             Social proof & Credibility
@@ -200,7 +200,7 @@ export default function OurInvestorCard() {
         {/* Carousel */}
         <div className="relative mb-16">
           {/* Desktop Carousel - unchanged */}
-          <div className="hidden lg:block">
+          <div className="hidden sm:block">
             <Carousel
               setApi={setApi}
               className="w-full"
@@ -307,8 +307,8 @@ export default function OurInvestorCard() {
         </div>
 
         {/* Footer CTA + Marquee */}
-        <div className="text-center">
-          <p className="text-white text-3xl mb-8 font-semibold">
+        <div className="text-center sm:mt-20">
+          <p className="sm:text-3xl sm:mb-8 font-semibold text-2xl mb-0">
             Join the 10,000+ investment firms network sharing insights
           </p>
           <LogoMarquee />

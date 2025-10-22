@@ -33,7 +33,7 @@ export function StatBubble() {
     return (
         <div className="backdrop-blur-sm rounded-[20px] px-8 py-4 shadow-[inset_1px_0_1px_rgba(255,255,255,0.1),inset_-1px_0_1px_rgba(255,255,255,0.1)]">
             <div className="flex items-center gap-4">
-                <img src={flash} alt="light" className="size:8 sm:size-10" />
+                <img src={flash} alt="light" className="sm:w-10 sm:h-10 w-9 h-9" />
                 <div className="flex text:xs sm:text-sm flex-col text-start">
                     <span className="text-muted-foreground text-base">10,000+</span>
                     <p className="mt-1 text-[10px] text-muted-foreground">investors sharing insights.</p>
@@ -45,11 +45,11 @@ export function StatBubble() {
 
 export function TrustBubble() {
     return (
-        <div className="backdrop-blur-sm rounded-[20px] px-5 py-4 shadow-[inset_1px_0_1px_rgba(255,255,255,0.2),inset_-1px_0_1px_rgba(255,255,255,0.2)]">
+        <div className="backdrop-blur-sm rounded-[20px] px-5 py-4 shadow-[inset_1px_0_1px_rgba(255,255,255,0.2),inset_-1px_0_1px_rgba(255,255,255,0.2)] sm:w-full w-fit">
             <div className="flex items-center gap-4">
-                <img src={userReview} alt="light" className="w-20 sm:w-24" />
+                <img src={userReview} alt="light" className="w-[70px] sm:w-24" />
                 <div className="flex text-sm flex-col text-start">
-                    <span className="text-gray-300 [10px] sm:text-xs">5.0 rating from 1,650+ patients</span>
+                    <span className="text-gray-300 [10px] sm:text-sm text-xs">5.0 rating from 1,650+ patients</span>
                     <div className="flex gap-1 items-center">
                         <div className="flex items-center text-amber-400">
                             <Star size={10} fill="currentColor" />
@@ -58,7 +58,7 @@ export function TrustBubble() {
                             <Star size={10} fill="currentColor" />
                             <Star size={10} fill="currentColor" />
                         </div>
-                        <p className="mt-1">Trustpilot</p>
+                        <p className="mt-1 sm:text-sm text-xs">Trustpilot</p>
                     </div>
                 </div>
             </div>

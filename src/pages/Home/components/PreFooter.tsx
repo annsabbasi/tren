@@ -8,18 +8,18 @@ import TechTren from '../../../assets/Home/TechTren.svg';
 
 const PreFooter = () => {
     return (
-        <section className="relative w-full text-center pt-40 md:px-12 max-w-6xl mx-auto">
+        <section className="relative w-full text-center sm:pt-40 md:px-12 max-w-6xl mx-auto sm:px-0 px-4 pt-24">
 
             <div className="relative max-w-5xl mx-auto space-y-10">
-                <div className="absolute !-left-16 top-28 md:left-10 z-10">
+                <div className="absolute sm:top-28 sm:left-10 z-10 -bottom-20 left-1/5">
                     <StatBubble />
                 </div>
 
                 {/* --- Main Content Card --- */}
-                <div className="relative border rounded-3xl p-10 md:p-16 shadow-lg w-full !py-24 overflow-hidden">
+                <div className="relative border rounded-3xl p-10 md:p-16 shadow-lg w-full sm:!py-24 overflow-hidden py-14">
                     {/* Top bull icon placeholder */}
                     <div className="flex justify-center mb-6">
-                        <img src={Logo} alt="logo" className="w-14 h-8" />
+                        <img src={Logo} alt="logo" className="sm:w-14 sm:h-8 " />
                     </div>
 
                     {/* Headline */}
@@ -28,8 +28,8 @@ const PreFooter = () => {
                     </h1>
 
                     {/* CTA Buttons */}
-                    <div className="mt-6 flex items-center justify-center gap-3">
-                        <Button className="special-btn hover:scale-110 gradient-box-shadow">
+                    <div className="sm:mt-8 mt-12 flex items-center justify-center sm:flex-row flex-col gap-5 sm:gap-3 w-full">
+                        <Button className="special-btn hover:scale-110 gradient-box-shadow w-2/3 sm:w-fit sm:py-5 sm:px-5 py-6 text-base">
                             Start free trial
                             <span className="ml-1">
                                 <ChevronRight size={14} />
@@ -46,27 +46,28 @@ const PreFooter = () => {
 
 
                     <div className="">
-                        <img src={singleBox} alt="box" className="absolute right-0 top-0 object-contain w-1/2" />
-                        <div className="green-circled absolute -top-20 -right-80"></div>
+                        <img src={singleBox} alt="box" className="absolute sm:block hidden right-0 top-0 object-contain w-1/2" />
+                        <div className="green-circled sm:block hidden absolute -top-20 -right-80"></div>
                     </div>
 
                     <div className="">
-                        <img src={singleBox} alt="box" className="absolute -bottom-36 -left-48 object-contain w-1/2" />
-                        <div className="purple-circled absolute -bottom-36 -left-60"></div>
+                        <img src={singleBox} alt="box" className="absolute -bottom-36 -left-48 object-contain w-1/2 sm:block hidden" />
+                        <div className="purple-circled absolute -bottom-36 -left-60 sm:block hidden"></div>
                     </div>
                 </div>
 
-                <div className="absolute !-right-24 bottom-24 md:right-10 w-88">
+                {/* <div className="absolute !-right-24 bottom-24 md:right-10 w-88"> */}
+                <div className="absolute sm:bottom-24 sm:right-10 w-88 -top-10 left-[15%]">
                     <TrustBubble />
                 </div>
-
             </div>
 
-            {/* <div className="absolute top-0 left-[5%]">
-                <img src={TechTren} alt="TechTren" />
-            </div> */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full">
                 <img src={TechTren} alt="TechTren" className="w-full max-w-full" />
+            </div>
+
+            <div className="">
+                <div className="purple-shadow sm:w-1/2 sm:h-96 bottom-20 sm:-right-[400px] right-0 w-full h-1/4 sm:hidden block"></div>
             </div>
 
         </section >
