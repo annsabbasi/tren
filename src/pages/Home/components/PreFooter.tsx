@@ -47,7 +47,7 @@ const PreFooter = () => {
 
                     <div className="">
                         <img src={singleBox} alt="box" className="absolute sm:block hidden right-0 top-0 object-contain w-1/2" />
-                        <div className="green-circled sm:block hidden absolute -top-20 -right-80"></div>
+                        <div className="green-circled w-[600px] h-[400px] blur-[80px] sm:block hidden absolute -top-20 -right-80"></div>
                     </div>
 
                     <div className="">

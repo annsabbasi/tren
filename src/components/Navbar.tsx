@@ -1,178 +1,198 @@
 import { useState } from "react";
-import { ChevronDown, X, Menu } from "lucide-react";
+import { ChevronDown, ChevronRight, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-    Sheet,
-    SheetContent,
-    SheetTrigger,
-    SheetClose,
-} from "@/components/ui/sheet";
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-    DropdownMenu,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import Logo from "../assets/Home/logo.png";
 import flag from "../assets/Home/Flags.svg";
+import singleBox from '../assets/Home/singlebox.png';
+import MenuIcon from '../assets/Home/menu-02.svg';
 
 export default function Navbar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
         <>
-            {/* Desktop Navbar */}
-            <header className="glass w-3/4 text-white px-6 py-2 flex items-center justify-between border !rounded-full left-1/2 -translate-x-1/2 mx-auto fixed z-50 mt-6 max-w-6xl">
+            {/* Navbar */}
+            <header className="fixed top-0 left-1/2 -translate-x-1/2 w-[90%] sm:w-3/4 max-w-6xl glass-dark2 text-white sm:px-6 px-4 sm:py-2 py-4 flex items-center justify-between border rounded-full z-[100] mt-6">
                 <div className="flex items-center gap-12">
-                    <div className="flex items-center gap-2">
+                    <Link to="/">
                         <img src={Logo} alt="Tech Tren Logo" className="w-32" />
-                    </div>
+                    </Link>
 
                     {/* Desktop Menu */}
                     <nav className="hidden md:flex items-center gap-8 text-sm">
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className="flex items-center gap-2 hover:text-gray-300 text-sm select-none cursor-pointer">
-                                Products <ChevronDown className="w-4 h-4" />
-                            </DropdownMenuTrigger>
-                        </DropdownMenu>
+                        <Dropdown title="Products">
+                            <LinkItem to="/financial-gpt">Financial GPT</LinkItem>
+                            <LinkItem to="/price-prediction">Price Prediction</LinkItem>
+                            <LinkItem to="/news-ai-insights">News & AI Insights</LinkItem>
+                            <LinkItem to="/watchlists">Watchlists</LinkItem>
+                        </Dropdown>
 
-                        <a href="#" className="hover:text-gray-300 text-sm select-none">
+                        <Link to="/pricing" className="hover:text-gray-300">
                             Pricing
-                        </a>
+                        </Link>
 
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className="flex items-center gap-2 hover:text-gray-300 text-sm select-none cursor-pointer">
-                                Resources <ChevronDown className="w-4 h-4" />
-                            </DropdownMenuTrigger>
-                        </DropdownMenu>
+                        <Dropdown title="Resources">
+                            <LinkItem to="/documentation">Documentation</LinkItem>
+                            <LinkItem to="/blog">Blog</LinkItem>
+                            <LinkItem to="/faqs">FAQs</LinkItem>
+                            <LinkItem to="/support">Support</LinkItem>
+                        </Dropdown>
 
-                        <a href="#" className="hover:text-gray-300 text-sm select-none">
+                        <Link to="/about" className="hover:text-gray-300">
                             About
-                        </a>
+                        </Link>
                     </nav>
                 </div>
 
-                {/* Right Side (Desktop Buttons + Language) */}
+                {/* Right Side */}
                 <div className="hidden md:flex items-center gap-2">
-                    <div className="flex items-center gap-2 border-l border-gray-700 pl-10 pr-4 relative">
+                    <div className="flex items-center gap-2 border-l border-gray-700 pl-10 pr-4">
                         <img src={flag} alt="Language flag" />
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className="flex items-center gap-1 outline-0 focus:outline-none relative">
-                                EN
-                            </DropdownMenuTrigger>
-                        </DropdownMenu>
+                        <span>EN</span>
                     </div>
 
                     <Button
                         variant="ghost"
-                        className="text-white hover:text-gray-300 rounded-full cursor-pointer"
+                        className="text-white hover:text-gray-300 rounded-full"
                         style={{ backgroundColor: "rgba(55, 65, 81, 0.25)" }}
+                        asChild
                     >
-                        Sign in
+                        <Link to="/signin">Sign in</Link>
                     </Button>
 
-                    <Button className="bg-white text-black rounded-full px-4 hover:bg-gray-200 font-semibold cursor-pointer hover:opacity-90 transition-all">
-                        Get free demo
+                    <Button
+                        className="bg-white text-black rounded-full px-4 hover:bg-gray-200 font-semibold"
+                        asChild
+                    >
+                        <Link to="/demo">Get free demo</Link>
                     </Button>
                 </div>
 
-                {/* Mobile Sheet Trigger */}
-                <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
-                    <SheetTrigger asChild>
-                        <button className="md:hidden block text-white focus:outline-none">
-                            <Menu className="w-6 h-6" />
-                        </button>
-                    </SheetTrigger>
-
-                    <SheetContent
-                        side="left"
-                        className="w-full bg-[#0b0b0b] text-white border-0 p-0 overflow-y-auto"
-                    >
-                        {/* Header inside sidebar */}
-                        <div className="flex items-center justify-between p-6 border-b border-gray-800">
-                            <div className="flex items-center gap-2">
-                                <img src={Logo} alt="Tech Tren Logo" className="w-28" />
-                            </div>
-
-                            {/* Close Button */}
-                            <SheetClose className="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none">
-                                <X className="h-6 w-6" />
-                                <span className="sr-only">Close</span>
-                            </SheetClose>
-                        </div>
-
-                        {/* Language Selector */}
-                        <div className="flex items-center gap-2 px-6 py-4 border-b border-gray-800">
-                            <img src={flag} alt="Language flag" className="w-6" />
-                            <span>EN</span>
-                        </div>
-
-                        {/* Mobile Navigation with Accordion */}
-                        <div className="p-6">
-                            <Accordion type="single" collapsible className="w-full">
-                                <AccordionItem value="products" className="border-b border-gray-800">
-                                    <AccordionTrigger className="text-white font-medium text-base hover:no-underline py-4">
-                                        Products
-                                    </AccordionTrigger>
-                                    <AccordionContent className="text-gray-300 pt-2">
-                                        <div className="space-y-3 pl-4">
-                                            <a href="#" className="block py-2 hover:text-white transition-colors">Financial GPT</a>
-                                            <a href="#" className="block py-2 hover:text-white transition-colors">Price Prediction</a>
-                                            <a href="#" className="block py-2 hover:text-white transition-colors">News & AI Insights</a>
-                                            <a href="#" className="block py-2 hover:text-white transition-colors">Watchlists</a>
-                                        </div>
-                                    </AccordionContent>
-                                </AccordionItem>
-
-                                <a
-                                    href="#"
-                                    className="flex items-center justify-between py-4 border-b border-gray-800 text-white font-medium text-base hover:text-gray-300 transition-colors"
-                                >
-                                    Pricing
-                                </a>
-
-                                <AccordionItem value="resources" className="border-b border-gray-800">
-                                    <AccordionTrigger className="text-white font-medium text-base hover:no-underline py-4">
-                                        Resources
-                                    </AccordionTrigger>
-                                    <AccordionContent className="text-gray-300 pt-2">
-                                        <div className="space-y-3 pl-4">
-                                            <a href="#" className="block py-2 hover:text-white transition-colors">Documentation</a>
-                                            <a href="#" className="block py-2 hover:text-white transition-colors">Blog</a>
-                                            <a href="#" className="block py-2 hover:text-white transition-colors">FAQs</a>
-                                            <a href="#" className="block py-2 hover:text-white transition-colors">Support</a>
-                                        </div>
-                                    </AccordionContent>
-                                </AccordionItem>
-
-                                <a
-                                    href="#"
-                                    className="flex items-center justify-between py-4 border-b border-gray-800 text-white font-medium text-base hover:text-gray-300 transition-colors"
-                                >
-                                    About
-                                </a>
-                            </Accordion>
-
-                            {/* Bottom Buttons */}
-                            <div className="mt-8 space-y-4">
-                                <Button className="w-full rounded-full text-black font-semibold bg-white hover:bg-gray-200">
-                                    Get free demo
-                                </Button>
-                                <Button
-                                    variant="ghost"
-                                    className="w-full rounded-full text-white font-semibold border border-gray-600 hover:bg-gray-800"
-                                >
-                                    Sign in
-                                </Button>
-                            </div>
-                        </div>
-                    </SheetContent>
-                </Sheet>
+                {/* Mobile Hamburger */}
+                <button
+                    className="md:hidden text-white focus:outline-none z-[150] relative"
+                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                >
+                    {/* {isSidebarOpen ? <X size={26} /> : <MenuIcon size={26} />} */}
+                    {isSidebarOpen ? <X size={26} /> : <img src={MenuIcon} alt="Menu" />}
+                </button>
             </header>
+
+            {/* Sidebar Overlay */}
+            <div
+                className={`fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${isSidebarOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                    } z-[90]`}
+                onClick={() => setIsSidebarOpen(false)}
+            />
+
+            {/* Sidebar Content */}
+            <aside
+                // className={`sidebar fixed top-0 left-0 h-full w-full bg-[#0b0b0b] text-white p-6 transition-transform duration-500 z-[95] flex flex-col justify-between pt-40 px-4 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+                className={`sidebar fixed top-0 left-0 h-full w-full bg-black text-white p-6 transition-transform duration-500 z-[95] flex flex-col justify-between pt-28 px-4 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+                    }`}
+            >
+                <Accordion type="single" collapsible className="">
+                    <AccordionItem value="products" className="border-transparent">
+                        <AccordionTrigger className="py-4 text-white text-lg">
+                            Products
+                        </AccordionTrigger>
+                        <AccordionContent className="flex items-start gap-6 flex-col ml-2">
+                            <Link onClick={() => setIsSidebarOpen(false)} to="/financial-gpt" >Financial GPT</Link>
+                            <Link onClick={() => setIsSidebarOpen(false)} to="/price-prediction">Price Prediction</Link>
+                            <Link onClick={() => setIsSidebarOpen(false)} to="/news-ai-insights">News & AI Insights</Link>
+                            <Link onClick={() => setIsSidebarOpen(false)} to="/watchlists">Watchlists</Link>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <SidebarLink onClose={() => setIsSidebarOpen(false)} to="/pricing">
+                        Pricing
+                    </SidebarLink>
+
+                    <AccordionItem value="resources" className="border-transparent">
+                        <AccordionTrigger className="py-4 text-white text-lg">
+                            Resources
+                        </AccordionTrigger>
+                        <AccordionContent className="flex items-start gap-6 flex-col ml-2">
+                            <Link onClick={() => setIsSidebarOpen(false)} to="/blog">Blog</Link>
+                            <Link onClick={() => setIsSidebarOpen(false)} to="/support">Support</Link>
+                            <Link onClick={() => setIsSidebarOpen(false)} to="/faqs">FAQs</Link>
+                            <Link onClick={() => setIsSidebarOpen(false)} to="/documentation">Documentation</Link>
+                        </AccordionContent>
+                    </AccordionItem>
+
+                    <SidebarLink onClose={() => setIsSidebarOpen(false)} to="/about">
+                        About
+                    </SidebarLink>
+                </Accordion >
+
+                <div className="mt-auto mb-4 flex flex-col items-center gap-6 ">
+                    <Button className="special-btn gradient-box-shadow w-[70%] py-7 ">
+                        <Link to="/demo" onClick={() => setIsSidebarOpen(false)} className="font-bold">
+                            Get free demo
+                        </Link>
+                        <ChevronRight size={14} className="ml-1" />
+                    </Button>
+
+                    {/* <div className="flex items-center justify-center gap-3"> */}
+                    {/* <img src={play} alt="play" className="size-7" /> */}
+                    <Button variant="default" className="w-[70%] py-7 text-base font-bold bg-transparent">
+                        <Link to="/signin" onClick={() => setIsSidebarOpen(false)}>
+                            Sign in
+                        </Link>
+                    </Button>
+                    {/* </div> */}
+                </div>
+                <div className="">
+                    <img src={singleBox} alt="box" className="absolute bottom-24 object-contain right-0 w-full -z-10" />
+                    <div className="purple-shadow bottom-10 left-20 w-1/2 h-[150px] -z-10"></div>
+                    <div className="purple-shadow -top-10 left-20 w-1/2 h-[100px] -z-10"></div>
+                </div>
+            </aside >
         </>
+    );
+}
+
+/* Utility components for clean structure */
+
+function Dropdown({ title, children }: { title: any, children: any }) {
+    return (
+        <div className="relative group">
+            <div className="flex items-center gap-2 hover:text-gray-300 cursor-pointer">
+                {title} <ChevronDown className="w-4 h-4" />
+            </div>
+            <div className="absolute glass border border-gray-700 rounded-2xl p-2 min-w-48 mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {children}
+            </div>
+        </div>
+    );
+}
+
+function LinkItem({ to, children }: { to: any, children: any }) {
+    return (
+        <Link
+            to={to}
+            className="block px-3 py-2 rounded-lg hover:bg-white/10 transition-colors"
+        >
+            {children}
+        </Link>
+    );
+}
+
+function SidebarLink({ to, onClose, children }: { to: any, onClose: any, children: any }) {
+    return (
+        <Link
+            to={to}
+            className="block py-3 hover:text-gray-300 transition text-lg"
+            onClick={onClose}
+        >
+            {children}
+        </Link>
     );
 }

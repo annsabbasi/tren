@@ -22,7 +22,6 @@ export default function Home() {
             <PricingPage />
             <SocialFeeds />
             <PreFooter />
-            {/* <New /> */}
         </div>
     )
 }
