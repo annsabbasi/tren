@@ -86,7 +86,7 @@ const LogoMarquee = () => {
       <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[rgba(6,4,12,0.9)] to-transparent z-10 pointer-events-none"></div>
       <div className="absolute rounded-lg right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[rgba(6,4,12,0.9)] to-transparent z-10 pointer-events-none"></div>
 
-      <Marquee >
+      <Marquee>
         <MarqueeContent pauseOnHover>
           {partnerLogos.map((logo, i) => (
             <MarqueeItem key={i} className="sm:mx-8 mx-4 flex-shrink-0">
@@ -106,71 +106,61 @@ const LogoMarquee = () => {
 };
 
 export default function OurInvestorCard() {
-  const [api, setApi] = React.useState<CarouselApi>();
+  const [desktopApi, setDesktopApi] = React.useState<CarouselApi>();
+  const [mobileApi, setMobileApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
-  // const [count, _] = React.useState(originalTestimonials.length);
+  const [count, _] = React.useState(originalTestimonials.length);
 
+  // Desktop carousel autoplay and tracking
   React.useEffect(() => {
-    if (!api) return;
+    if (!desktopApi) return;
 
     const update = () => {
-      const selected = api.selectedScrollSnap() % originalTestimonials.length;
+      const selected = desktopApi.selectedScrollSnap() % originalTestimonials.length;
       setCurrent(selected);
     };
 
     update();
-    api.on("select", update);
+    desktopApi.on("select", update);
 
-    // Auto-play with 2 second interval
     const autoplay = setInterval(() => {
-      api.scrollNext();
+      desktopApi.scrollNext();
     }, 4000);
 
     return () => clearInterval(autoplay);
-  }, [api]);
+  }, [desktopApi]);
 
-  // Function to calculate dot style based on position relative to active dot
+  // Mobile carousel autoplay
+  React.useEffect(() => {
+    if (!mobileApi) return;
+
+    const autoplay = setInterval(() => {
+      mobileApi.scrollNext();
+    }, 4000);
+
+    return () => clearInterval(autoplay);
+  }, [mobileApi]);
+
+  // Function to calculate dot style
   const getDotStyle = (index: number) => {
     const distanceFromActive = Math.abs(index - current);
 
-    // For 7 dots, we'll have this hierarchy:
-    // Active dot: largest size, full opacity
     if (distanceFromActive === 0) {
-      return {
-        width: "1rem", // 16px - largest
-        height: "0.5rem", // 8px
-        opacity: 1
-      };
+      return { width: "1rem", height: "0.5rem", opacity: 1 };
     }
-    // Immediate neighbors (1 away): medium size, high opacity
-    if (distanceFromActive === 1 || distanceFromActive === 6) { // 6 accounts for circular nature
-      return {
-        width: "0.6rem", // 12px - medium
-        height: "0.6rem", // 6px
-        opacity: 0.8
-      };
+    if (distanceFromActive === 1 || distanceFromActive === 6) {
+      return { width: "0.6rem", height: "0.6rem", opacity: 0.8 };
     }
-    // Next neighbors (2 away): small size, medium opacity
     if (distanceFromActive === 2 || distanceFromActive === 5) {
-      return {
-        width: "0.4rem", // 8px - small
-        height: "0.4rem", // 4px
-        opacity: 0.5
-      };
+      return { width: "0.4rem", height: "0.4rem", opacity: 0.5 };
     }
-    // Farthest dots (3 away): smallest size, low opacity
-    return {
-      width: "0.4rem", // 6px - smallest
-      height: "0.4rem", // 3px
-      opacity: 0.3
-    };
+    return { width: "0.4rem", height: "0.4rem", opacity: 0.3 };
   };
 
   return (
     <section className="relative py-20 rounded-tl-3xl rounded-tr-3xl max-w-6xl mx-auto overflow-hidden">
       {/* Gradient overlay */}
       <div className="absolute top-0 left-0 w-full h-[450px] bg-[linear-gradient(180deg,rgba(20,232,147,0.1)_0%,rgba(6,4,12,0.1)_100%)] pointer-events-none -z-[1]"></div>
-
 
       <div className="relative max-w-7xl mx-auto sm:px-6 px-0">
         {/* Header */}
@@ -189,7 +179,6 @@ export default function OurInvestorCard() {
             have to say about our best-in-class prop AI based investment firm.
           </p>
 
-          {/* This is your target area (till here the gradient will appear) */}
           <div className="flex items-center justify-center gap-3 mt-5 text-base relative">
             <span className="font-medium">Excellent</span>
             <img src={Stars} alt="5 star rating" className="h-5 w-auto" />
@@ -197,12 +186,12 @@ export default function OurInvestorCard() {
           </div>
         </div>
 
-        {/* Carousel */}
+        {/* Carousel Section */}
         <div className="relative mb-16">
-          {/* Desktop Carousel - unchanged */}
+          {/* Desktop Carousel */}
           <div className="hidden sm:block">
             <Carousel
-              setApi={setApi}
+              setApi={setDesktopApi}
               className="w-full"
               opts={{ align: "start", loop: true }}
             >
@@ -235,15 +224,12 @@ export default function OurInvestorCard() {
             </Carousel>
           </div>
 
-          {/* Mobile Carousel - with responsive behavior similar to RevolutionSlider */}
-          <div className="block lg:hidden overflow-visible">
+          {/* Mobile Carousel */}
+          <div className="block sm:hidden overflow-visible">
             <Carousel
-              setApi={setApi}
+              setApi={setMobileApi}
               className="w-full"
-              opts={{
-                align: "center",
-                loop: true,
-              }}
+              opts={{ align: "center", loop: true }}
             >
               <CarouselContent className="ml-1 mr-0">
                 {testimonials.map((t, i) => (
@@ -251,12 +237,14 @@ export default function OurInvestorCard() {
                     key={`${t.id}-${i}`}
                     className="pl-2 pr-2 basis-3/4"
                   >
-                    <div className={cn(
-                      "transition-all duration-300 transform",
-                      current === (i % originalTestimonials.length)
-                        ? "scale-100 opacity-100"
-                        : "scale-90 opacity-70"
-                    )}>
+                    <div
+                      className={cn(
+                        "transition-all duration-300 transform",
+                        current === (i % originalTestimonials.length)
+                          ? "scale-100 opacity-100"
+                          : "scale-90 opacity-70"
+                      )}
+                    >
                       <Card className="border rounded-2xl h-full hover:border-gray-500 bg-transparent transition cursor-default">
                         <CardContent className="px-6 py-2 h-full flex flex-col">
                           <div className="flex items-center gap-4 mb-4">
@@ -281,15 +269,15 @@ export default function OurInvestorCard() {
             </Carousel>
           </div>
 
-          {/* Pagination Dots - Now showing exactly 7 dots */}
+          {/* Pagination Dots */}
           <div className="mt-10 flex justify-center">
             <div className="flex items-center gap-3 px-6 py-3 bg-black/80 border border-gray-700/40 rounded-full">
-              {Array.from({ length: 7 }).map((_, i) => {
+              {Array.from({ length: count }).map((_, i) => {
                 const dotStyle = getDotStyle(i);
                 return (
                   <button
                     key={i}
-                    onClick={() => api?.scrollTo(i)}
+                    onClick={() => desktopApi?.scrollTo(i)}
                     className={cn(
                       "transition-all duration-300 rounded-full bg-gray-600 hover:bg-gray-400",
                       current === i && "bg-white"
@@ -297,7 +285,7 @@ export default function OurInvestorCard() {
                     style={{
                       width: dotStyle.width,
                       height: dotStyle.height,
-                      opacity: dotStyle.opacity
+                      opacity: dotStyle.opacity,
                     }}
                   />
                 );
