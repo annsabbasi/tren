@@ -17,7 +17,6 @@ import {
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
-// Define the step type
 interface Step {
     number: string;
     title: string;
@@ -27,7 +26,6 @@ interface Step {
     signals: boolean;
 }
 
-// Step data for carousel
 const steps: Step[] = [
     {
         number: "1",
@@ -55,11 +53,9 @@ const steps: Step[] = [
     }
 ];
 
-// Step Card Component
 const StepCard = ({ step, className = "" }: { step: Step; className?: string }) => (
     <div className={cn("group", className)}>
         <Card className="relative flex flex-col items-center text-center p-6 bg-transparent hover:shadow-lg transition-all duration-300 border border-border group-hover:border-[#28AD9B] glass-dark2 h-full">
-            {/* Step number badge with gradient on hover */}
             <div className="absolute -top-5 bg-[#06040C] border border-border rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300">
                 <span className="text-lg font-medium group-hover:text-white">{step.number}</span>
             </div>
@@ -102,7 +98,6 @@ const StepCard = ({ step, className = "" }: { step: Step; className?: string }) 
     </div>
 );
 
-// Mobile Carousel Component - Single slide only
 const StepsCarousel = ({ steps }: { steps: Step[] }) => {
     const [api, setApi] = React.useState<CarouselApi>();
     const [current, setCurrent] = React.useState(0);
@@ -117,7 +112,6 @@ const StepsCarousel = ({ steps }: { steps: Step[] }) => {
         update();
         api.on("select", update);
 
-        // Auto-play with 4 second interval
         const autoplay = setInterval(() => {
             api.scrollNext();
         }, 30000);
@@ -125,38 +119,35 @@ const StepsCarousel = ({ steps }: { steps: Step[] }) => {
         return () => clearInterval(autoplay);
     }, [api]);
 
-    // Function to calculate dot style based on position relative to active dot
     const getDotStyle = (index: number) => {
         const distanceFromActive = Math.abs(index - current);
 
-        // Active dot: largest size, full opacity
         if (distanceFromActive === 0) {
             return {
-                width: "1rem", // 16px - largest
-                height: "0.5rem", // 8px
+                width: "1rem",
+                height: "0.5rem",
                 opacity: 1
             };
         }
-        // Immediate neighbors (1 away): medium size, high opacity
         if (distanceFromActive === 1 || distanceFromActive === (steps.length - 1)) {
             return {
-                width: "0.6rem", // 12px - medium
-                height: "0.6rem", // 6px
+                width: "0.6rem",
+                height: "0.6rem",
                 opacity: 0.8
             };
         }
         // Next neighbors (2 away): small size, medium opacity
         if (distanceFromActive === 2 || distanceFromActive === (steps.length - 2)) {
             return {
-                width: "0.4rem", // 8px - small
-                height: "0.4rem", // 4px
+                width: "0.4rem",
+                height: "0.4rem",
                 opacity: 0.5
             };
         }
         // Farthest dots: smallest size, low opacity
         return {
-            width: "0.4rem", // 6px - smallest
-            height: "0.4rem", // 3px
+            width: "0.4rem",
+            height: "0.4rem",
             opacity: 0.3
         };
     };
@@ -175,7 +166,7 @@ const StepsCarousel = ({ steps }: { steps: Step[] }) => {
                     {steps.map((step, index) => (
                         <CarouselItem
                             key={index}
-                            className="basis-full bg-transparent" // Full width - single slide only
+                            className="basis-full bg-transparent"
                         >
                             <StepCard step={step} className="pt-5 h-full" />
                         </CarouselItem>
@@ -183,7 +174,6 @@ const StepsCarousel = ({ steps }: { steps: Step[] }) => {
                 </CarouselContent>
             </Carousel>
 
-            {/* Pagination Dots - Same style as reference */}
             <div className="mt-4 flex justify-center">
                 <div className="flex items-center gap-3 px-6 py-3 bg-black/80 border border-gray-700/40 rounded-full">
                     {steps.map((_, i) => {
@@ -220,7 +210,6 @@ const StepsCarousel = ({ steps }: { steps: Step[] }) => {
 export default function HowItWorksSection() {
     return (
         <section className="relative w-full flex flex-col items-center justify-center sm:pb-20 sm:pt-8 sm:px-4 text-center max-w-6xl mx-auto pt-0 px-2 pb-10">
-            {/* Top: small text link */}
             <div className="text-sm mb-5 flex items-center justify-center gap-2">
                 <img src={PuzzlePiece} alt="PuzzlePiece" className="w-4 h-4" />
                 <p className="text-gray-400">
@@ -228,7 +217,6 @@ export default function HowItWorksSection() {
                 </p>
             </div>
 
-            {/* Main title */}
             <h1 className="sm:text-5xl font-medium mb-2 text-4xl">
                 Tech Tren – your personal
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
@@ -236,12 +224,10 @@ export default function HowItWorksSection() {
                 </span>
             </h1>
 
-            {/* Subtitle */}
             <p className="text-sm sm:text-base text-muted-foreground sm:mb-16 text-gray-400 mb-10">
                 Find out if you're the investor – in 3 minutes
             </p>
 
-            {/* Desktop: Grid Layout */}
             <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl sm:mt-8 mt-0 sm:px-0 px-6">
                 {steps.map((step, index) => (
                     <StepCard key={index} step={step} className="group-hover:bg-gradient-to-r group-hover:from-[#28AD9B] group-hover:to-[#4E3AAC] group-hover:border-transparent transition-all duration-300 cursor-default" />

@@ -141,7 +141,6 @@ export default function OurInvestorCard() {
     return () => clearInterval(autoplay);
   }, [mobileApi]);
 
-  // Function to calculate dot style
   const getDotStyle = (index: number) => {
     const distanceFromActive = Math.abs(index - current);
 
@@ -159,11 +158,9 @@ export default function OurInvestorCard() {
 
   return (
     <section className="relative py-20 rounded-tl-3xl rounded-tr-3xl max-w-6xl mx-auto overflow-hidden">
-      {/* Gradient overlay */}
       <div className="absolute top-0 left-0 w-full h-[450px] bg-[linear-gradient(180deg,rgba(20,232,147,0.1)_0%,rgba(6,4,12,0.1)_100%)] pointer-events-none -z-[1]"></div>
 
       <div className="relative max-w-7xl mx-auto sm:px-6 px-0">
-        {/* Header */}
         <div className="text-center mb-14 sm:px-0 px-4">
           <p className="flex items-center justify-center gap-2 text-xs uppercase tracking-wide text-gray-400 mb-3">
             <Star className="w-3 h-3" />

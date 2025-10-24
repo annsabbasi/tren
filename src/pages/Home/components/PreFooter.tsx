@@ -9,25 +9,20 @@ import TechTren from '../../../assets/Home/TechTren.svg';
 const PreFooter = () => {
     return (
         <section className="relative w-full text-center sm:pt-40 md:px-12 max-w-6xl mx-auto sm:px-0 px-4 pt-24">
-
             <div className="relative max-w-5xl mx-auto space-y-10">
                 <div className="absolute sm:top-28 sm:left-10 z-10 -bottom-20 left-1/5">
                     <StatBubble />
                 </div>
 
-                {/* --- Main Content Card --- */}
                 <div className="relative border rounded-3xl p-10 md:p-16 shadow-lg w-full sm:!py-24 overflow-hidden py-14">
-                    {/* Top bull icon placeholder */}
                     <div className="flex justify-center mb-6">
                         <img src={Logo} alt="logo" className="sm:w-14 sm:h-8 " />
                     </div>
 
-                    {/* Headline */}
                     <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-8">
                         Stop trading blind. <br /> Start trading with AI.
                     </h1>
 
-                    {/* CTA Buttons */}
                     <div className="sm:mt-8 mt-12 flex items-center justify-center sm:flex-row flex-col gap-5 sm:gap-3 w-full">
                         <Button className="special-btn hover:scale-110 gradient-box-shadow w-2/3 sm:w-fit sm:py-5 sm:px-5 py-6 text-base">
                             Start free trial
@@ -56,7 +51,6 @@ const PreFooter = () => {
                     </div>
                 </div>
 
-                {/* <div className="absolute !-right-24 bottom-24 md:right-10 w-88"> */}
                 <div className="absolute sm:bottom-24 sm:right-10 w-88 -top-10 left-[15%]">
                     <TrustBubble />
                 </div>
@@ -69,7 +63,6 @@ const PreFooter = () => {
             <div className="">
                 <div className="purple-shadow sm:w-1/2 sm:h-96 bottom-20 sm:-right-[400px] right-0 w-full h-1/4 sm:hidden block"></div>
             </div>
-
         </section >
     );
 };

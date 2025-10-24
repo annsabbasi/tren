@@ -45,7 +45,7 @@ const Footer = () => {
                 <div className="hidden md:grid md:grid-cols-4 gap-10 justify-items-center">
                     {/* --- Left Section --- */}
 
-                    <div className="space-y-5 max-w-xs">
+                    <div className="space-y-5 max-w-xs py-5">
                         <p className="text-sm leading-relaxed pr-10 text-gray-300">
                             AI-powered predictions, real-time data, and investor communities —
                             all in one platform.
@@ -128,7 +128,6 @@ const Footer = () => {
 
                 {/* --- Mobile Accordion Sections --- */}
                 <div className="md:hidden flex flex-col gap-8">
-                    {/* App store icons */}
                     <div className="flex flex-col items-center mt-4 gap-4">
                         <p className="text-base text-center text-gray-300 max-w-xs px-6">
                             AI-powered predictions, real-time data, and investor communities —
@@ -204,18 +203,6 @@ const Footer = () => {
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
-
-                    {/* App store icons */}
-                    {/* <div className="flex flex-col items-center mt-4 gap-4">
-                        <p className="text-sm text-center text-gray-300 max-w-xs">
-                            AI-powered predictions, real-time data, and investor communities —
-                            all in one platform.
-                        </p>
-                        <div className="flex gap-3 mt-3">
-                            <img src={AppStore} alt="appStore" className="w-32 cursor-pointer" />
-                            <img src={PlayApp} alt="playApp" className="w-32 cursor-pointer" />
-                        </div>
-                    </div> */}
                 </div>
 
                 <hr className="mt-1 bg-gray-800" />

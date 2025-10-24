@@ -39,7 +39,6 @@ export default function RevolutionPage() {
                                 <Tag label="Trading strategies" imgVal={lightBulb} />
                             </div>
                             <div className="absolute sm:-bottom-5 sm:left-30">
-                                {/* <div className="absolute sm:-bottom-5 sm:left-30  -top-2 right-16"> */}
                                 <Tag label="Risk management" imgVal={sheild} />
                             </div>
                             <div className="absolute sm:-top-4 sm:right-30 bottom-0 -right-24">
@@ -79,7 +78,7 @@ export default function RevolutionPage() {
 
 export function Tag({ label, imgVal }: { label: string, imgVal: string }) {
     return (
-        <div className="sm:px-6 sm:py-2 bg-[#141418]/70 rounded-full sm:text-sm flex items-center gap-2 border border-white/20 hover:bg-[#1a1a1f]/70 transition-all backdrop-blur-md backdrop-saturate-150 text-xs px-4 py-1">
+        <div className="sm:px-8 sm:py-2 bg-[#141418]/70 rounded-full sm:text-sm flex items-center gap-2 border border-white/20 hover:bg-[#1a1a1f]/70 transition-all backdrop-blur-md backdrop-saturate-150 text-xs px-4 py-1">
             <span className="inline-block">
                 <img src={imgVal} alt="" className="sm:w-5 sm:h-5 w-4 h-4" />
             </span>

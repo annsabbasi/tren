@@ -4,8 +4,20 @@ body {
   font-family: SuisseIntl-Light;
 }
 
-button.absolute.top-4.right-4.rounded-xs {
+/* button.absolute.top-4.right-4.rounded-xs {
   display: none !important;
+} */
+
+html {
+  overflow-y: scroll;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: SuisseIntl-Medium;
 }
 
 .sidebar::before {
@@ -19,23 +31,9 @@ button.absolute.top-4.right-4.rounded-xs {
   z-index: -1;
 }
 
-html {
-  overflow-y: scroll;
-  /* Always reserve space for scrollbar */
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: SuisseIntl-Medium;
-}
-
 .home-main {
   background: url("./assets/Home/noise.svg") center center / cover no-repeat;
 }
-
 
 .special-btn {
   border-radius: 9999px;
@@ -60,9 +58,7 @@ h5 {
 }
 
 .glass-dark {
-  /* background: rgba(20, 20, 20, 0.45); */
   background: rgba(20, 20, 20, 0.80);
-  /* dark tint with transparency */
   border-radius: 16px;
   backdrop-filter: blur(10px) saturate(160%);
   -webkit-backdrop-filter: blur(10px) saturate(160%);
@@ -71,16 +67,11 @@ h5 {
 }
 
 .glass-dark2 {
-  /* background: rgba(20, 20, 20, 0.45); */
   background: rgba(20, 20, 20, 0.30);
-  /* dark tint with transparency */
   border-radius: 16px;
   backdrop-filter: blur(10px) saturate(160%);
   -webkit-backdrop-filter: blur(10px) saturate(160%);
-  /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6); */
 }
-
-
 
 .glass-card {
   background: rgba(255, 255, 255, 0.06);
@@ -129,8 +120,6 @@ h5 {
   position: absolute;
   border-radius: 50%;
   background: linear-gradient(275.19deg, #14E893 -15.5%, #5131AD 98.25%);
-  /* width: 600px;
-  height: 450px; */
   z-index: -1;
   opacity: 1;
   filter: blur(300px) saturate(50%);
@@ -145,11 +134,8 @@ h5 {
 
 .green-circled {
   background: linear-gradient(274.57deg, #0C744A 1.89%, #14E893 98.19%);
-  /* width: 600px; */
-  /* height: 400px; */
   border-radius: 50%;
   opacity: 0.2;
-  /* filter: blur(80px); */
   z-index: -2;
 }
 

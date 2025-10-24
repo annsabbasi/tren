@@ -12,7 +12,6 @@ import AiStrategyVd from '../../../assets/Home/HOMEPAGE_HEADER_WEB.mp4';
 export default function AiStrategies() {
     return (
         <section className='relative py-28 sm:pt-12 mx-auto pt-6'>
-            {/* Add a container div with higher z-index for content */}
             <div className='relative max-w-6xl mx-auto'>
                 <div className='flex items-center justify-between sm:gap-8 sm:mb-20 sm:flex-row sm:text-left flex-col text-center gap-6 mb-16'>
                     <h1 className='sm:text-5xl sm:font-semi-bold sm:leading-12 sm:px-0 px-4 leading-9 font-light text-[34px]'>AI Says: 65% chance of upward trend.</h1>
@@ -25,7 +24,7 @@ export default function AiStrategies() {
                         <h3 className='sm:text-4xl text-3xl'>Welcome to Financial GPT</h3>
                         <p className='max-w-xl sm:text-base text-gray-400 text-center text-xs'>Ask me anything about financial markets, trading strategies, stock analysis, economic trends, or investment insights. I'm here to help you make informed financial decisions.</p>
 
-                        {/* Updated GIF section with blend mode */}
+                        {/* GIF Blend Mode */}
                         <div className='w-full h-full relative flex justify-center'>
                             <div className='relative sm:w-2/5 sm:h-40 mx-auto w-3/4 h-24'>
                                 <img

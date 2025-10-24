@@ -32,7 +32,7 @@ const data: StockData[] = [
 ];
 
 
-// StockCard Component for Marquee Items
+// StockCard Component Marquee 
 const StockCard = ({ item }: { item: StockData }) => (
     <div className="glass-card text-white p-4 flex flex-col justify-between rounded-3xl sm:h-28 sm:w-40 w-32 h-24 sm:pt-4 pt-3">
         <div className="sm:space-y-2 space-y-0 sm:mb-0 mb-1">
@@ -51,7 +51,7 @@ const StockCard = ({ item }: { item: StockData }) => (
     </div>
 );
 
-// MarqueeCards Component using shadcn marquee
+// MarqueeCards Component shadcn
 interface MarqueeCardsProps {
     items: StockData[];
     direction?: "left" | "right";
@@ -66,9 +66,7 @@ const MarqueeCards = ({
     pauseOnHover = true,
     className,
 }: MarqueeCardsProps) => {
-    // Transform direction to whatever prop the Marquee component expects
     const marqueeProps = {
-        // Example: if the component uses 'reverse' instead of 'direction'
         reverse: direction === "right",
         pauseOnHover,
     };
@@ -93,8 +91,8 @@ const MarqueeCards = ({
 export default function RevolutionBullCard() {
     return (
         <div className="relative flex items-stretch justify-between gap-4 mx-auto pb-20 max-w-6xl sm:flex-row flex-col sm:pr-0 px-6">
-            {/* First Card */}
             <div className="relative sm:pl-4 pl-0">
+                {/* First Card */}
                 <Card className="relative overflow-hidden glass-dark">
                     <CardHeader className="pb-4">
                         <div className="relative h-28 mb-4">
@@ -126,7 +124,6 @@ export default function RevolutionBullCard() {
                     </span>
                 </Card>
 
-                {/* Marquee Section - Using shadcn marquee */}
                 <div className="absolute sm:top-5 left-0 w-full h-full top-20">
                     <MarqueeCards
                         items={data}
@@ -138,8 +135,6 @@ export default function RevolutionBullCard() {
             </div>
 
             {/* Second Card */}
-
-
             <Card className="relative overflow-hidden bg-transparent glass-dark">
                 <CardHeader className="pb-4">
                     <div className="relative h-28 mb-4">

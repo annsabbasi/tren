@@ -88,7 +88,7 @@ const PricingCard = ({ tier, billingPeriod, isSticky = false }: { tier: PricingT
 
                 <div className="border-t border-gray-700 w-full" />
 
-                {/* Features section - no gradient */}
+                {/* Features section */}
                 <div className="px-7 py-4">
                     <Accordion type="multiple" className="space-y-6" defaultValue={Object.keys(tier.features)}>
                         {Object.entries(tier.features).map(([key, feature]) => (
@@ -112,6 +112,7 @@ const PricingCard = ({ tier, billingPeriod, isSticky = false }: { tier: PricingT
         </Card>
     );
 };
+
 
 const FreeTrialCard = () => (
     <Card className="bg-transparent py-0 rounded-4xl mb-8">
@@ -144,6 +145,7 @@ const FreeTrialCard = () => (
         </CardContent>
     </Card>
 );
+
 
 const BillingToggle = ({ billingPeriod, setBillingPeriod }: {
     billingPeriod: 'monthly' | 'yearly';
@@ -179,6 +181,7 @@ const BillingToggle = ({ billingPeriod, setBillingPeriod }: {
         </TabsList>
     </Tabs>
 );
+
 
 // Mobile Tabs Component
 const MobilePlanTabs = ({
@@ -225,12 +228,8 @@ const PricingSection: React.FC = () => {
     const [selectedMobileTier, setSelectedMobileTier] = useState<PricingTier>(pricingData[0]);
     const cardsRef = useRef<Map<string, HTMLDivElement>>(new Map());
 
-    // Check if any accordion is open in any card
-
-    // Update sticky cards when openCard changes
     useEffect(() => {
         if (openCard) {
-            // When a card is opened, make all cards below it sticky
             const openedCardIndex = pricingData.findIndex(tier => tier.id === openCard);
             const newStickyCards = new Set<string>();
 
@@ -242,12 +241,10 @@ const PricingSection: React.FC = () => {
 
             setStickyCards(newStickyCards);
         } else {
-            // When no card is open, clear all sticky cards
             setStickyCards(new Set());
         }
     }, [openCard]);
 
-    // Handle scroll to maintain sticky behavior
     useEffect(() => {
         const handleScroll = () => {
             if (!openCard) return;
@@ -259,7 +256,6 @@ const PricingSection: React.FC = () => {
             const openedCardBottom = openedCardRect.bottom;
             const viewportHeight = window.innerHeight;
 
-            // If the opened card is near the bottom of the viewport, keep other cards sticky
             if (openedCardBottom < viewportHeight - 100) {
                 const openedCardIndex = pricingData.findIndex(tier => tier.id === openCard);
                 const newStickyCards = new Set<string>();

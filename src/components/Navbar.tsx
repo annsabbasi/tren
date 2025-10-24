@@ -18,7 +18,6 @@ export default function Navbar() {
 
     return (
         <>
-            {/* Navbar */}
             <header className="fixed top-0 left-1/2 -translate-x-1/2 w-[90%] sm:w-3/4 max-w-6xl glass-dark2 text-white sm:px-6 px-4 sm:py-2 py-4 flex items-center justify-between border rounded-full z-[100] mt-6">
                 <div className="flex items-center gap-12">
                     <Link to="/">
@@ -80,7 +79,6 @@ export default function Navbar() {
                     className="md:hidden text-white focus:outline-none z-[150] relative"
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 >
-                    {/* {isSidebarOpen ? <X size={26} /> : <MenuIcon size={26} />} */}
                     {isSidebarOpen ? <X size={26} /> : <img src={MenuIcon} alt="Menu" />}
                 </button>
             </header>
@@ -94,7 +92,6 @@ export default function Navbar() {
 
             {/* Sidebar Content */}
             <aside
-                // className={`sidebar fixed top-0 left-0 h-full w-full bg-[#0b0b0b] text-white p-6 transition-transform duration-500 z-[95] flex flex-col justify-between pt-40 px-4 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
                 className={`sidebar fixed top-0 left-0 h-full w-full bg-black text-white p-6 transition-transform duration-500 z-[95] flex flex-col justify-between pt-28 px-4 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
                     }`}
             >
@@ -139,15 +136,11 @@ export default function Navbar() {
                         </Link>
                         <ChevronRight size={14} className="ml-1" />
                     </Button>
-
-                    {/* <div className="flex items-center justify-center gap-3"> */}
-                    {/* <img src={play} alt="play" className="size-7" /> */}
                     <Button variant="default" className="w-[70%] py-7 text-base font-bold bg-transparent">
                         <Link to="/signin" onClick={() => setIsSidebarOpen(false)}>
                             Sign in
                         </Link>
                     </Button>
-                    {/* </div> */}
                 </div>
                 <div className="">
                     <img src={singleBox} alt="box" className="absolute bottom-24 object-contain right-0 w-full -z-10" />
@@ -159,7 +152,7 @@ export default function Navbar() {
     );
 }
 
-/* Utility components for clean structure */
+
 
 function Dropdown({ title, children }: { title: any, children: any }) {
     return (
@@ -174,6 +167,7 @@ function Dropdown({ title, children }: { title: any, children: any }) {
     );
 }
 
+
 function LinkItem({ to, children }: { to: any, children: any }) {
     return (
         <Link
@@ -184,6 +178,7 @@ function LinkItem({ to, children }: { to: any, children: any }) {
         </Link>
     );
 }
+
 
 function SidebarLink({ to, onClose, children }: { to: any, onClose: any, children: any }) {
     return (

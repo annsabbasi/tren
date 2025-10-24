@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import * as React from "react";
-
 import Icon1 from '../../../assets/Home/revolution-carousel-icon1.svg';
 import Icon2 from '../../../assets/Home/revolution-carousel-icon2.svg';
 import Icon3 from '../../../assets/Home/revolution-carousel-icon3.svg';
@@ -41,7 +40,7 @@ const cards = [
     },
 ];
 
-// Card Component for Marquee Items
+// Card Component Marquee 
 const FeatureCard = ({ card, className = "" }: { card: typeof cards[0]; className?: string }) => (
     <Card className={cn("!w-80 bg-gradient-to-b rounded-2xl text-center text-white flex-shrink-0 mx-3", className)}>
         <CardContent className="p-6 flex flex-col items-center justify-center space-y-4 pt-1 gap-4">
@@ -54,7 +53,7 @@ const FeatureCard = ({ card, className = "" }: { card: typeof cards[0]; classNam
     </Card>
 );
 
-// Custom subtle fade component
+// Custom subtle fade
 const SmokeFade = ({ side }: { side: 'left' | 'right' }) => (
     <div
         className={`
@@ -75,7 +74,7 @@ const SmokeFade = ({ side }: { side: 'left' | 'right' }) => (
     />
 );
 
-// MarqueeCards Component using shadcn marquee
+// MarqueeCards Component shadcn
 interface FeatureMarqueeProps {
     items: typeof cards;
     direction?: "left" | "right";
@@ -97,7 +96,6 @@ const FeatureMarquee = ({
     return (
         <div className={`relative w-full ${className}`}>
             <Marquee {...marqueeProps}>
-                {/* Replace default MarqueeFade with our custom SmokeFade */}
                 <SmokeFade side="left" />
                 <SmokeFade side="right" />
                 <MarqueeContent>
@@ -112,13 +110,11 @@ const FeatureMarquee = ({
     );
 };
 
-// Mobile Carousel Component
 interface FeatureCarouselProps {
     items: typeof cards;
     className?: string;
 }
 
-// Mobile Carousel Component
 interface FeatureCarouselProps {
     items: typeof cards;
     className?: string;
@@ -141,7 +137,6 @@ const FeatureCarousel = ({
         update();
         api.on("select", update);
 
-        // Auto-play with 3 second interval
         const autoplay = setInterval(() => {
             api.scrollNext();
         }, 4000);
@@ -149,38 +144,37 @@ const FeatureCarousel = ({
         return () => clearInterval(autoplay);
     }, [api]);
 
-    // Function to calculate dot style based on position relative to active dot
     const getDotStyle = (index: number) => {
         const distanceFromActive = Math.abs(index - current);
 
-        // Active dot: largest size, full opacity
+        // Active dot
         if (distanceFromActive === 0) {
             return {
-                width: "1rem", // 16px - largest
-                height: "0.5rem", // 8px
+                width: "1rem",
+                height: "0.5rem",
                 opacity: 1
             };
         }
-        // Immediate neighbors (1 away): medium size, high opacity
+        // Immediate neighbors (1 away)
         if (distanceFromActive === 1 || distanceFromActive === (items.length - 1)) {
             return {
-                width: "0.6rem", // 12px - medium
-                height: "0.6rem", // 6px
+                width: "0.6rem",
+                height: "0.6rem",
                 opacity: 0.8
             };
         }
-        // Next neighbors (2 away): small size, medium opacity
+        // Next neighbors (2 away)
         if (distanceFromActive === 2 || distanceFromActive === (items.length - 2)) {
             return {
-                width: "0.4rem", // 8px - small
-                height: "0.4rem", // 4px
+                width: "0.4rem",
+                height: "0.4rem",
                 opacity: 0.5
             };
         }
-        // Farthest dots: smallest size, low opacity
+        // Farthest dots
         return {
-            width: "0.4rem", // 6px - smallest
-            height: "0.4rem", // 3px
+            width: "0.4rem",
+            height: "0.4rem",
             opacity: 0.3
         };
     };
@@ -195,12 +189,10 @@ const FeatureCarousel = ({
                     loop: true,
                 }}
             >
-                {/* Remove negative margins and adjust padding */}
                 <CarouselContent className="-ml-10 mr-0 ">
                     {items.map((card, index) => (
                         <CarouselItem
                             key={index}
-                            // Use basis-3/4 (75%) instead of 4/5 (80%) to show more of adjacent slides
                             className="pl-2 pr-2 basis-3/4 sm:basis-2/5"
                         >
                             <div className={cn(
@@ -246,7 +238,6 @@ const FeatureCarousel = ({
 export default function RevolutionSlider() {
     return (
         <div className="relative overflow-visible w-full bg-transparent pb-10 px-4 sm:px-8 lg:px-16 max-w-6xl mx-auto">
-            {/* Desktop - Marquee */}
             <div className="hidden lg:block">
                 <FeatureMarquee
                     items={cards}
@@ -255,7 +246,6 @@ export default function RevolutionSlider() {
                 />
             </div>
 
-            {/* Mobile - Carousel with Partial Slides Visible */}
             <div className="block lg:hidden overflow-visible">
                 <FeatureCarousel items={cards} />
             </div>
